@@ -1271,7 +1271,7 @@ For adding an MCP server in your workspace, create a `.vscode/mcp.json` file in 
     === "Windows"
         ```json
         {
-          "mcpServers": {
+          "servers": {
             "weather": {
               "command": "uv",
               "args": [
@@ -1288,7 +1288,7 @@ For adding an MCP server in your workspace, create a `.vscode/mcp.json` file in 
     === "macOS/Linux"
         ```json
         {
-          "mcpServers": {
+          "servers": {
             "weather": {
               "command": "uv",
               "args": [
@@ -1307,7 +1307,7 @@ For adding an MCP server in your workspace, create a `.vscode/mcp.json` file in 
     === "Windows"
         ```json
         {
-          "mcpServers": {
+          "servers": {
             "weather": {
               "command": "node",
               "args": ["C:\\ABSOLUTE\\PATH\\TO\\PARENT\\FOLDER\\weather-mcp\\build\\index.js"]
@@ -1319,7 +1319,7 @@ For adding an MCP server in your workspace, create a `.vscode/mcp.json` file in 
     === "macOS/Linux"
         ```json
         {
-          "mcpServers": {
+          "servers": {
             "weather": {
               "command": "node",
               "args": ["/ABSOLUTE/PATH/TO/PARENT/FOLDER/weather-mcp/build/index.js"]
@@ -1333,7 +1333,7 @@ For adding an MCP server in your workspace, create a `.vscode/mcp.json` file in 
     === "Windows"
         ```json
         {
-          "mcpServers": {
+          "servers": {
             "weather": {
               "command": "java",
               "args": [
@@ -1348,7 +1348,7 @@ For adding an MCP server in your workspace, create a `.vscode/mcp.json` file in 
     === "macOS/Linux"
         ```json
         {
-          "mcpServers": {
+          "servers": {
             "weather": {
               "command": "java",
               "args": [
@@ -1365,7 +1365,7 @@ For adding an MCP server in your workspace, create a `.vscode/mcp.json` file in 
     === "Windows"
         ```json
         {
-          "mcpServers": {
+          "servers": {
             "weather": {
               "command": "java",
               "args": [
@@ -1380,7 +1380,7 @@ For adding an MCP server in your workspace, create a `.vscode/mcp.json` file in 
     === "macOS/Linux"
         ```json
         {
-          "mcpServers": {
+          "servers": {
             "weather": {
               "command": "java",
               "args": [
@@ -1397,7 +1397,7 @@ For adding an MCP server in your workspace, create a `.vscode/mcp.json` file in 
     === "Windows"
         ```json
         {
-          "mcpServers": {
+          "servers": {
             "weather": {
               "command": "dotnet",
               "args": [
@@ -1414,7 +1414,7 @@ For adding an MCP server in your workspace, create a `.vscode/mcp.json` file in 
     === "macOS/Linux"
         ```json
         {
-          "mcpServers": {
+          "servers": {
             "weather": {
               "command": "dotnet",
               "args": [

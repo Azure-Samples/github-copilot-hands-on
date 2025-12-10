@@ -20,7 +20,7 @@ This exercise is a successor of the Polaroid image gallery exercise we use for o
 
 ## Prerequisites
 
-Please create a fork of [this repository](https://github.com/jeffreygroneberg/ghcp-mcp) to your own GitHub account. This will allow you to make changes and experiment with the code without affecting the original repository.
+Please create a fork of [this repository](https://github.com/jeffreygroneberg/ghcp-mcp) to your own GitHub account. After forking the repository Issues need to be [enabled](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/enabling-features-for-your-repository/disabling-issues). This will allow you to make changes and experiment with the code without affecting the original repository.
 
 Afterwards, you can clone that repository to your local machine or have it open in a GitHub Codespace.
 
@@ -63,7 +63,7 @@ After clicking on the tools button, you should see the following:
 
 We will leverage the GitHub Copilot MCP server to create an issue in your repository. This issue will contain the requirements for the Polaroid image gallery based on the designer mockup.
 
-Switch over to the GitHub Copilot Chat and drag the [img_gallery_prompt.jpg](../assets/images/gallery/img_gallery_prompt.jpg) file into the chat input panel. This will upload the image to the chat and allow the agent to analyze it. Be sure to use `Claude 3.7 Sonnet` or another reasoning model for this task (that is capable of dealing with images). A reasoning model is recommended to analyze the image and create an issue with the requirements.
+Switch over to the GitHub Copilot Chat and drag the [crazy_mockup.png](https://github.com/jeffreygroneberg/ghcp-mcp/tree/main/html/mockup) (ghcp-mcp/html/mockup) file into the chat input panel. This will upload the image to the chat and allow the agent to analyze it. Be sure to use `Claude 3.7 Sonnet` or another reasoning model for this task (that is capable of dealing with images). A reasoning model is recommended to analyze the image and create an issue with the requirements.
 
 Open the basic `index.html` file in an active tab, and use the following prompt to create the issue:
 
