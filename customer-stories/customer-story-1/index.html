@@ -1,0 +1,2336 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A comprehensive workshop for learning GitHub Copilot capabilities">
+      
+      
+        <meta name="author" content="GitHub Copilot Workshop Team">
+      
+      
+      
+        <link rel="prev" href="../../hands-on/other-labs/">
+      
+      
+        <link rel="next" href="../customer-story-2/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../assets/images/custom/github-copilot-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+    
+    
+      
+        <title>Spring Boot Session Management Customer Case - GitHub Copilot Hands-on Labs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#spring-boot-session-management-customer-case" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="GitHub Copilot Hands-on Labs" class="md-header__button md-logo" aria-label="GitHub Copilot Hands-on Labs" data-md-component="logo">
+      
+  <img src="../../assets/images/custom/github-copilot-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            GitHub Copilot Hands-on Labs
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Spring Boot Session Management Customer Case
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Azure-Samples/github-copilot-hands-on/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Azure-Samples/github-copilot-hands-on
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../workshop-overview/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Workshop Overview
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../train-the-trainer/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Train the Trainer
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../model-comparison/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Model Comparison
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../hands-on/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Hands-on Labs
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Customer Stories
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../future-roadmap/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Future Roadmap
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../rag-extension-lab/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  RAG Extension Lab
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="GitHub Copilot Hands-on Labs" class="md-nav__button md-logo" aria-label="GitHub Copilot Hands-on Labs" data-md-component="logo">
+      
+  <img src="../../assets/images/custom/github-copilot-logo.png" alt="logo">
+
+    </a>
+    GitHub Copilot Hands-on Labs
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Azure-Samples/github-copilot-hands-on/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Azure-Samples/github-copilot-hands-on
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../workshop-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workshop Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../train-the-trainer/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Train the Trainer
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../model-comparison/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../hands-on/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hands-on Labs
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hands-on Labs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Fundamentals
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hands-on/html-gallery/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML Image Gallery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hands-on/rock_paper_scissors/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rock Paper Scissors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    APIs
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    APIs
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hands-on/starwars-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Star Wars API in Java
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hands-on/starwars-api-python/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Star Wars API in Python
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    MCP
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hands-on/gh-gallery-mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Image Gallery with MCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hands-on/mcp-server-starter/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Build Your Own MCP Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hands-on/mcp-fiar/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP Fiar Game
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hands-on/other-labs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Other Labs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Customer Stories
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Customer Stories
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spring Boot Session Management Customer Case
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spring Boot Session Management Customer Case
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customer-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customer Challenge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customer Challenge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#business-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Business Goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution Approach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prototype-1-session-affinity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototype 1: Session Affinity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototype-2-sticky-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototype 2: Sticky Sessions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototype-3-externalized-session-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototype 3: Externalized Session Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-a-custom-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Create a Custom Agent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Create a Custom Agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-add-mcp-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Add MCP Servers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Add MCP Servers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-mcp-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended MCP Servers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-the-prompt-to-leverage-mcp-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adjusting the Prompt to Leverage MCP Servers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prototype-1-no-session-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototype 1: No Session Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prototype 1: No Session Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initial Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploying-to-azure-container-apps-and-testing-session-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying to Azure Container Apps and testing session loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-session-affinity-to-solve-the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling Session Affinity to solve the problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prototype-2-externalized-session-management-with-azure-managed-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototype 2: Externalized Session Management with Azure Managed Redis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prototype 2: Externalized Session Management with Azure Managed Redis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-session-management-with-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying session management with Redis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../customer-story-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Agent Systems with MCP and External APIs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../future-roadmap/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Future Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rag-extension-lab/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RAG Extension Lab
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#lab-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Lab Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#customer-challenge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Customer Challenge
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Customer Challenge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Requirements
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#business-goals" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Business Goals
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution-approach" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Solution Approach
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Solution Approach">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prototype-1-session-affinity" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototype 1: Session Affinity
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototype-2-sticky-sessions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototype 2: Sticky Sessions
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#prototype-3-externalized-session-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototype 3: Externalized Session Management
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Getting Started
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-create-a-custom-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1: Create a Custom Agent
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 1: Create a Custom Agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Custom Instructions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-add-mcp-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2: Add MCP Servers
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Step 2: Add MCP Servers">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#recommended-mcp-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recommended MCP Servers
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adjusting-the-prompt-to-leverage-mcp-servers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Adjusting the Prompt to Leverage MCP Servers
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Implementation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prototype-1-no-session-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototype 1: No Session Management
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prototype 1: No Session Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Initial Setup
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deploying-to-azure-container-apps-and-testing-session-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Deploying to Azure Container Apps and testing session loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enabling-session-affinity-to-solve-the-problem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Enabling Session Affinity to solve the problem
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prototype-2-externalized-session-management-with-azure-managed-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prototype 2: Externalized Session Management with Azure Managed Redis
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Prototype 2: Externalized Session Management with Azure Managed Redis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implementation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verifying-session-management-with-redis" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verifying session management with Redis
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="spring-boot-session-management-customer-case">Spring Boot Session Management Customer Case<a class="headerlink" href="#spring-boot-session-management-customer-case" title="Permanent link">&para;</a></h1>
+<p>This customer case showcases how we leveraged GitHub Copilot end-to-end to solve session management challenges in a monolithic Spring Boot application. We demonstrate how GitHub Copilot can accelerate development of prototypes from concept to deployment.</p>
+<h2 id="lab-overview">Lab Overview<a class="headerlink" href="#lab-overview" title="Permanent link">&para;</a></h2>
+<p><strong>Duration</strong>: 2-3 hours<br />
+<strong>Difficulty</strong>: Advanced<br />
+<strong>Prerequisites</strong>:</p>
+<ul>
+<li>Java LTS 21 knowledge</li>
+<li>Spring Boot 3.x experience</li>
+<li>Docker fundamentals</li>
+<li>Azure Container Apps understanding</li>
+<li>Maven build tool familiarity</li>
+</ul>
+<h2 id="customer-challenge">Customer Challenge<a class="headerlink" href="#customer-challenge" title="Permanent link">&para;</a></h2>
+<p>The customer wanted to understand how to achieve session management within their monolithic application without refactoring their entire codebase to a microservices architecture.</p>
+<h3 id="key-requirements">Key Requirements<a class="headerlink" href="#key-requirements" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Monolithic Spring Boot application built on Java LTS 21</li>
+<li>Session management across multiple instances</li>
+<li>Horizontal scaling capabilities</li>
+<li>Minimal codebase refactoring</li>
+</ul>
+<h3 id="business-goals">Business Goals<a class="headerlink" href="#business-goals" title="Permanent link">&para;</a></h3>
+<p>The customer needed to:</p>
+<ul>
+<li>Horizontally scale their applications across multiple instances while maintaining session state</li>
+<li>Explore different approaches to session management</li>
+<li>Compare solutions with minimal architectural changes</li>
+</ul>
+<h2 id="solution-approach">Solution Approach<a class="headerlink" href="#solution-approach" title="Permanent link">&para;</a></h2>
+<p>We built two different prototypes to showcase different approaches for solving the session management challenges. Both solutions leverage Azure Container Apps as the hosting platform.</p>
+<h3 id="prototype-1-session-affinity">Prototype 1: Session Affinity<a class="headerlink" href="#prototype-1-session-affinity" title="Permanent link">&para;</a></h3>
+<p><strong>Building a Spring Boot application with neither sticky sessions nor externalized session management</strong>. This prototype showcases the challenges faced when scaling a monolithic application without proper session management.</p>
+<h3 id="prototype-2-sticky-sessions">Prototype 2: Sticky Sessions<a class="headerlink" href="#prototype-2-sticky-sessions" title="Permanent link">&para;</a></h3>
+<p><strong>Using Azure Container Apps with sticky sessions enabled</strong></p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/container-apps/sticky-sessions?pivots=azure-portal">Azure Container Apps Sticky Sessions Documentation</a></li>
+</ul>
+<h3 id="prototype-3-externalized-session-management">Prototype 3: Externalized Session Management<a class="headerlink" href="#prototype-3-externalized-session-management" title="Permanent link">&para;</a></h3>
+<p><strong>Using Spring Session with Redis to externalize session management</strong></p>
+<ul>
+<li><a href="https://learn.microsoft.com/en-us/azure/developer/java/spring-framework/configure-spring-boot-initializer-java-app-with-redis-cache?tabs=entraid&amp;pivots=azure-managed-redis">Spring Session with Redis Documentation</a></li>
+</ul>
+<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
+<h3 id="step-1-create-a-custom-agent">Step 1: Create a Custom Agent<a class="headerlink" href="#step-1-create-a-custom-agent" title="Permanent link">&para;</a></h3>
+<p>Before starting implementation, it's recommended to create a custom agent specific to your needs. In GitHub Copilot and VS Code, this can be done with chat modes and custom instructions.</p>
+<div class="admonition info">
+<p class="admonition-title">Custom Agent Setup</p>
+<p>Learn more about creating custom agents: <a href="https://code.visualstudio.com/docs/copilot/customization/custom-agents#_create-a-custom-agent">VS Code Custom Agents Documentation</a></p>
+</div>
+<p><img alt="Custom Agent Setup" src="../../assets/images/customer-stories/custom_agent.png" /></p>
+<h4 id="custom-instructions">Custom Instructions<a class="headerlink" href="#custom-instructions" title="Permanent link">&para;</a></h4>
+<p>Use the following custom instructions for your agent tailored to Spring Boot development:</p>
+<details class="abstract">
+<summary>Spring Boot Java Implementer - Custom Instructions</summary>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-0-1"><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>---
+</span><span id="__span-0-2"><a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>description: &#39;Expert Java Spring Boot developer specializing in enterprise applications with Java LTS 21 and Maven&#39;
+</span><span id="__span-0-3"><a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="gu">tools: []</span>
+</span><span id="__span-0-4"><a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="gu">---</span>
+</span><span id="__span-0-5"><a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+</span><span id="__span-0-6"><a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="gh"># Spring Boot Java Implementer</span>
+</span><span id="__span-0-7"><a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+</span><span id="__span-0-8"><a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>This custom agent specializes in developing and maintaining Spring Boot applications using Java LTS 21 and Maven. It focuses on implementing enterprise-grade solutions following Spring Framework best practices.
+</span><span id="__span-0-9"><a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
+</span><span id="__span-0-10"><a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="gu">## When to Use This Agent</span>
+</span><span id="__span-0-11"><a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+</span><span id="__span-0-12"><a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="k">-</span><span class="w"> </span>Building or extending Spring Boot applications
+</span><span id="__span-0-13"><a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">-</span><span class="w"> </span>Implementing RESTful APIs and web services
+</span><span id="__span-0-14"><a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">-</span><span class="w"> </span>Configuring Spring Security, Data, or other Spring modules
+</span><span id="__span-0-15"><a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">-</span><span class="w"> </span>Setting up Maven build configurations and dependency management
+</span><span id="__span-0-16"><a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="k">-</span><span class="w"> </span>Developing session management solutions (in-memory, Redis, database-backed)
+</span><span id="__span-0-17"><a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="k">-</span><span class="w"> </span>Implementing service layers, repositories, and controllers
+</span><span id="__span-0-18"><a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="k">-</span><span class="w"> </span>Writing unit and integration tests with JUnit 5 and Spring Test
+</span><span id="__span-0-19"><a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">-</span><span class="w"> </span>Troubleshooting Spring Boot application issues
+</span><span id="__span-0-20"><a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
+</span><span id="__span-0-21"><a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="gu">## Technical Scope</span>
+</span><span id="__span-0-22"><a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
+</span><span id="__span-0-23"><a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="gs">**Primary Technologies:**</span>
+</span><span id="__span-0-24"><a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="k">-</span><span class="w"> </span>Java LTS 21 (Long-Term Support version)
+</span><span id="__span-0-25"><a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="k">-</span><span class="w"> </span>Spring Boot 3.x
+</span><span id="__span-0-26"><a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="k">-</span><span class="w"> </span>Maven for build and dependency management
+</span><span id="__span-0-27"><a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="k">-</span><span class="w"> </span>Spring Framework ecosystem (Spring Data, Spring Security, Spring Session, etc.)
+</span><span id="__span-0-28"><a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="k">-</span><span class="w"> </span>Docker for containerization
+</span><span id="__span-0-29"><a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="k">-</span><span class="w"> </span>Azure Container Apps for deployment and hosting
+</span><span id="__span-0-30"><a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+</span><span id="__span-0-31"><a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="gs">**Core Capabilities:**</span>
+</span><span id="__span-0-32"><a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="k">-</span><span class="w"> </span>Generate idiomatic Java code following modern Java 21 features (records, pattern matching, sealed classes)
+</span><span id="__span-0-33"><a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="k">-</span><span class="w"> </span>Configure Spring Boot applications using application.properties or application.yml
+</span><span id="__span-0-34"><a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="k">-</span><span class="w"> </span>Implement dependency injection and IoC container patterns
+</span><span id="__span-0-35"><a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="k">-</span><span class="w"> </span>Set up Maven POMs with appropriate dependencies and plugins
+</span><span id="__span-0-36"><a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="k">-</span><span class="w"> </span>Create optimized Dockerfiles for Spring Boot applications
+</span><span id="__span-0-37"><a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="k">-</span><span class="w"> </span>Configure applications for Azure Container Apps environment
+</span><span id="__span-0-38"><a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="k">-</span><span class="w"> </span>Implement health checks and readiness probes for container orchestration
+</span><span id="__span-0-39"><a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="k">-</span><span class="w"> </span>Follow Spring Boot conventions and best practices
+</span><span id="__span-0-40"><a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="k">-</span><span class="w"> </span>Write comprehensive tests using Spring Boot Test framework
+</span><span id="__span-0-41"><a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
+</span><span id="__span-0-42"><a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="gu">## Boundaries</span>
+</span><span id="__span-0-43"><a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
+</span><span id="__span-0-44"><a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>This agent will NOT:
+</span><span id="__span-0-45"><a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="k">-</span><span class="w"> </span>Implement solutions using outdated Java versions (&lt; Java 21 LTS)
+</span><span id="__span-0-46"><a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="k">-</span><span class="w"> </span>Use Gradle instead of Maven (unless explicitly requested to migrate)
+</span><span id="__span-0-47"><a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="k">-</span><span class="w"> </span>Implement non-Spring frameworks without clear justification
+</span><span id="__span-0-48"><a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="k">-</span><span class="w"> </span>Make breaking changes without explanation
+</span><span id="__span-0-49"><a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="k">-</span><span class="w"> </span>Handle Azure infrastructure provisioning (focuses on application code and containerization)
+</span><span id="__span-0-50"><a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a>
+</span><span id="__span-0-51"><a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="gu">## Ideal Inputs</span>
+</span><span id="__span-0-52"><a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a>
+</span><span id="__span-0-53"><a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="k">-</span><span class="w"> </span>Feature requirements with specific Spring Boot modules needed
+</span><span id="__span-0-54"><a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="k">-</span><span class="w"> </span>API specifications or endpoint descriptions
+</span><span id="__span-0-55"><a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="k">-</span><span class="w"> </span>Database schema or data model requirements
+</span><span id="__span-0-56"><a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="k">-</span><span class="w"> </span>Configuration requirements (security, caching, session management, etc.)
+</span><span id="__span-0-57"><a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="k">-</span><span class="w"> </span>Existing codebase context for modifications
+</span><span id="__span-0-58"><a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a>
+</span><span id="__span-0-59"><a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="gu">## Expected Outputs</span>
+</span><span id="__span-0-60"><a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
+</span><span id="__span-0-61"><a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="k">-</span><span class="w"> </span>Clean, well-structured Java code following Spring Boot conventions
+</span><span id="__span-0-62"><a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="k">-</span><span class="w"> </span>Properly configured Maven <span class="sb">`pom.xml`</span> with necessary dependencies
+</span><span id="__span-0-63"><a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="k">-</span><span class="w"> </span>Spring configuration files (application.properties/yml)
+</span><span id="__span-0-64"><a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="k">-</span><span class="w"> </span>Controller, Service, and Repository layer implementations
+</span><span id="__span-0-65"><a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="k">-</span><span class="w"> </span>Dockerfiles optimized for Spring Boot applications
+</span><span id="__span-0-66"><a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="k">-</span><span class="w"> </span>Container configuration for Azure Container Apps
+</span><span id="__span-0-67"><a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="k">-</span><span class="w"> </span>Health check and readiness probe implementations
+</span><span id="__span-0-68"><a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="k">-</span><span class="w"> </span>Unit and integration tests
+</span><span id="__span-0-69"><a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a><span class="k">-</span><span class="w"> </span>Documentation comments and implementation notes
+</span><span id="__span-0-70"><a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>
+</span><span id="__span-0-71"><a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="gu">## Progress Reporting</span>
+</span><span id="__span-0-72"><a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a>
+</span><span id="__span-0-73"><a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a>The agent will:
+</span><span id="__span-0-74"><a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="k">-</span><span class="w"> </span>Confirm understanding of requirements before implementation
+</span><span id="__span-0-75"><a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="k">-</span><span class="w"> </span>Explain architectural decisions and Spring module choices
+</span><span id="__span-0-76"><a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="k">-</span><span class="w"> </span>Highlight any potential issues or trade-offs
+</span><span id="__span-0-77"><a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="k">-</span><span class="w"> </span>Request clarification when requirements are ambiguous
+</span><span id="__span-0-78"><a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="k">-</span><span class="w"> </span>Provide context about Spring Boot configuration choices
+</span><span id="__span-0-79"><a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="k">-</span><span class="w"> </span>Alert when additional dependencies or configuration is needed
+</span></code></pre></div>
+</details>
+<div class="admonition tip">
+<p class="admonition-title">Copilot Tip</p>
+<p>Read these custom instructions carefully before starting implementation. These instructions were generated with Claude Sonnet 4.5 based on the initial project description. You can further customize them to your needs.</p>
+</div>
+<h3 id="step-2-add-mcp-servers">Step 2: Add MCP Servers<a class="headerlink" href="#step-2-add-mcp-servers" title="Permanent link">&para;</a></h3>
+<p>Right now our agent is limited to the model's knowledge. We need additional function calling capabilities (e.g., interacting with Azure CLI or external tools).</p>
+<p>We'll add MCP servers to our custom agent. You can leverage either:</p>
+<ul>
+<li>The internal marketplace of VS Code: <a href="https://code.visualstudio.com/docs/copilot/customization/mcp-servers">MCP Servers Documentation</a></li>
+<li>The GitHub MCP Registry with one-click integration: <a href="https://github.com/mcp">GitHub MCP</a></li>
+</ul>
+<h4 id="recommended-mcp-servers">Recommended MCP Servers<a class="headerlink" href="#recommended-mcp-servers" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p><strong>Azure MCP</strong>: Provides knowledge about Azure services and can interact with Azure CLI to provision resources or fetch configurations: <a href="https://github.com/mcp/com.microsoft/azure">Azure MCP</a></p>
+</li>
+<li>
+<p><strong>Context7</strong>: Pulls up-to-date, version-specific documentation and code examples straight from the source: <a href="https://github.com/mcp/io.github.upstash/context7">Context7 MCP</a></p>
+</li>
+<li>
+<p><strong>Microsoft Learn MCP</strong>: Provides access to Microsoft Learn documentation and tutorials: <a href="https://github.com/mcp/microsoftdocs/mcp">Microsoft Learn MCP</a></p>
+</li>
+</ul>
+<p>After adding the MCP servers to VS Code, enable them in your custom agent by adding them to the <code>tools</code> section:</p>
+<p><img alt="Add Tools to your agent" src="../../assets/images/customer-stories/add_tools.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Important</p>
+<p>Be sure to enable the built-in tools completely as well to leverage the full power of GitHub Copilot.</p>
+</div>
+<h4 id="adjusting-the-prompt-to-leverage-mcp-servers">Adjusting the Prompt to Leverage MCP Servers<a class="headerlink" href="#adjusting-the-prompt-to-leverage-mcp-servers" title="Permanent link">&para;</a></h4>
+<p>Add this note to the beginning of your custom agent prompt:</p>
+<div class="language-markdown highlight"><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>Before starting the implementation, please leverage the available MCP servers to gather the latest information and best practices regarding Spring Boot, Java LTS 21, Maven, Docker, and Azure Container Apps. Use the knowledge from these MCP servers to inform your implementation decisions and ensure that the solution is up-to-date with current standards and practices.
+</span></code></pre></div>
+<h2 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">&para;</a></h2>
+<p>With the custom agent and MCP servers in place, we can now start implementing our prototypes.</p>
+<h3 id="prototype-1-no-session-management">Prototype 1: No Session Management<a class="headerlink" href="#prototype-1-no-session-management" title="Permanent link">&para;</a></h3>
+<h4 id="initial-setup">Initial Setup<a class="headerlink" href="#initial-setup" title="Permanent link">&para;</a></h4>
+<p>In the first prototype, we'll build a simple Spring Boot application without any session management. This demonstrates the challenges when scaling a monolithic application without proper session management.</p>
+<p><strong>Objectives:</strong>
+- Show that when scaling to multiple instances, session state is lost
+- Demonstrate users getting logged out or losing session data
+- Establish the baseline problem</p>
+<div class="admonition tip">
+<p class="admonition-title">Copilot Tip</p>
+<p>Start a new chat with your custom agent. <strong>Ensure you've selected your custom agent from the dropdown in the chat window.</strong></p>
+</div>
+<p>Use the following prompt to build the first prototype:</p>
+<div class="admonition abstract">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-2-1"><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>We want to build a simple Spring Boot application that does not implement any session management at all. The application should have the following features:
+</span><span id="__span-2-2"><a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>- A login endpoint that accepts username and password and creates a session
+</span><span id="__span-2-3"><a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>- A protected endpoint that returns user-specific data only if the user is logged in
+</span><span id="__span-2-4"><a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>- A logout endpoint that invalidates the session
+</span><span id="__span-2-5"><a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>- Use in-memory session management (default behavior of Spring Boot)
+</span><span id="__span-2-6"><a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+</span><span id="__span-2-7"><a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>Please generate the complete codebase including:
+</span><span id="__span-2-8"><a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>- Maven `pom.xml`
+</span><span id="__span-2-9"><a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>- Application configuration
+</span><span id="__span-2-10"><a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>- Controllers, services, and any other necessary components
+</span><span id="__span-2-11"><a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>- A Dockerfile to containerize the application for deployment to Azure Container Apps
+</span><span id="__span-2-12"><a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>- A simple UI using Thymeleaf to demonstrate login, protected content access, and logout functionality
+</span><span id="__span-2-13"><a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+</span><span id="__span-2-14"><a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>Store the app in folder `prototype-1-no-session-management`
+</span><span id="__span-2-15"><a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>Use Java LTS 21 and Spring Boot 3.x
+</span></code></pre></div>
+</div>
+<p>The build process will take a moment. Once completed, you should have a complete codebase for the first prototype in the <code>prototype-1-no-session-management</code> folder.</p>
+<p>Check the chat window to see what has been built:</p>
+<p><img alt="agent_finished_poc_1" src="../../assets/images/customer-stories/agent_finished_poc_1.png" /></p>
+<p>You should start the prototype to verify that everything is working as expected. If you have problems to start the prototype then ask the agent for help to troubleshoot the issues!</p>
+<h3 id="deploying-to-azure-container-apps-and-testing-session-loss">Deploying to Azure Container Apps and testing session loss<a class="headerlink" href="#deploying-to-azure-container-apps-and-testing-session-loss" title="Permanent link">&para;</a></h3>
+<p>Once the application is working locally we can proceed to containerize it and deploy it to Azure Container Apps.
+We will leverage the agent to help us here with the deployment.</p>
+<p>Let's see if it will interact appropriately with the Azure MCP server to provision the necessary resources and deploy the application with a replica count of 2 and NO session stickiness enabled.</p>
+<p>Use the following prompt in the chat window of your custom agent:</p>
+<div class="admonition abstract">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-3-1"><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>We have a Spring Boot application in the folder `prototype-1-no-session-management` that we want to deploy to Azure Container Apps and use the built in docker builder of Azure Container Apps. Please help us with the following tasks:
+</span><span id="__span-3-2"><a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>- Provision the necessary Azure resources including a Resource Group and Azure Container App Environment.
+</span><span id="__span-3-3"><a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>- We like to leverage the built in source with dockerfile deployment of azure container apps
+</span><span id="__span-3-4"><a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>- Deploy the Container App with a replica count of 2 and NO session stickiness enabled.
+</span><span id="__span-3-5"><a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>- Explain to us how we can test the application to verify that session loss occurs when scaling across multiple instances.
+</span></code></pre></div>
+</div>
+<p>The result should be a complete deployment script that provisions the resources, builds and pushes the Docker image, and deploys the Container App with the specified configuration that helps you show session loss.</p>
+<p>Leverage the agent again if you have problems to get the deployment working. In my case I had a <code>deploy.sh</code> script generated that I could run directly from the terminal to deploy the application.</p>
+<div class="language-bash highlight"><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># Navigate to the project directory</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>prototype-1-no-session-management
+</span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># Make deployment script executable (if not already)</span>
+</span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>chmod<span class="w"> </span>+x<span class="w"> </span>deploy.sh
+</span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># Run the deployment</span>
+</span><span id="__span-4-6"><a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>./deploy.sh
+</span></code></pre></div>
+<p>Let's be realistic: There might be errors during deployment. If that is the case leverage the agent to help you troubleshoot the issues. We suggest to nudge the agent with the error messages you get during deployment to get help on how to fix them.</p>
+<p>One of the issues that might occur:</p>
+<ul>
+<li>
+<p>The agent might try to use docker to build and push the image. <strong>Remember: Docker is NOT required for this deployment method!</strong> You can simply use <code>az containerapp up</code> with source code or JAR file and it will leverage buildpacks to build the container image for you automatically without any Docker files or manual Docker builds! Tell the agent to use that method instead.</p>
+</li>
+<li>
+<p>Java 21 support: Make sure that the agent is aware that we want to use Java LTS 21. The buildpacks need to know that as well. You can pass the build environment variable <code>BP_JVM_VERSION=21</code> to <code>az containerapp up</code> to make sure the right Java version is used. Or ask it to look this info up from the Azure MCP server and/or MS Docs.</p>
+</li>
+<li>
+<p>When testing the app you cannot login. The CSRF protection might an issue here. Ask the agent to analyze the problem</p>
+</li>
+</ul>
+<p><strong>The goal should be ONE deploy.sh file that is doing the infrastructure provisioning and deployment of the Container App and an URL that you can visit in your browser!</strong></p>
+<p>You will see that when you access the application URL that in most cases you are not able to login. To prove that session loss is the problem <strong>you should scale the container app down to 1 replica and try to login again. This time it should work!</strong></p>
+<p>Leverage the agent to scale it down to 1 replica:</p>
+<div class="admonition abstract">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-5-1"><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>Please help us to scale down the Container App to 1 replica!
+</span></code></pre></div>
+</div>
+<p>Once you have verified that scaling down to 1 replica makes the login work you have proven that session loss is the problem when scaling to multiple instances without session management.</p>
+<h3 id="enabling-session-affinity-to-solve-the-problem">Enabling Session Affinity to solve the problem<a class="headerlink" href="#enabling-session-affinity-to-solve-the-problem" title="Permanent link">&para;</a></h3>
+<p>To solve the session loss problem we can enable session affinity (sticky sessions) in Azure Container Apps. This will ensure that requests from the same user are always routed to the same instance, preserving session state.</p>
+<p>First of all ask the agent to help you enable sticky sessions for the Container App:</p>
+<div class="admonition abstract">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-6-1"><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Please help us to enable sticky sessions for the Container App to solve the session loss problem!
+</span><span id="__span-6-2"><a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>Create a deployment script `enable_sticky_sessions.sh` that we can run from the terminal to enable sticky sessions.
+</span></code></pre></div>
+</div>
+<p>Afterwards ask the agent to give you the link to the portal so that you can verify that sticky sessions are enabled:</p>
+<div class="admonition abstract">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-7-1"><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>Please provide us with the direct link to the Azure Portal page of the Container App so that we can verify that sticky sessions are enabled!
+</span></code></pre></div>
+</div>
+<p>Here you can see the sticky sessions enabled in the portal:</p>
+<p><img alt="sticky_sessions_enabled" src="../../assets/images/customer-stories/session_stickiness.png" /></p>
+<h2 id="prototype-2-externalized-session-management-with-azure-managed-redis">Prototype 2: Externalized Session Management with Azure Managed Redis<a class="headerlink" href="#prototype-2-externalized-session-management-with-azure-managed-redis" title="Permanent link">&para;</a></h2>
+<p>In the second prototype we will build a Spring Boot application that uses externalized session management with Azure Managed Redis. This will help us showcase how to properly manage sessions in a scalable way across multiple instances and not using sticky sessions.</p>
+<p>We will leverage our custom agent to help us with the implementation. Start a <strong>new chat</strong> with your custom agent and provide the following input to it. <strong>Be sure to have selected your custom agent from the dropdown in the chat window.</strong></p>
+<h3 id="implementation_1">Implementation<a class="headerlink" href="#implementation_1" title="Permanent link">&para;</a></h3>
+<div class="admonition abstract">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-8-1"><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>We want to build a simple Spring Boot application that uses externalized session management with Azure Managed Redis. Please copy our existing prototype from `prototype-1-no-session-management` and modify it to use Spring Session with Redis for session management. The application should have the same features as before - including the infra folder with a bicep script:
+</span><span id="__span-8-2"><a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>- A login endpoint that accepts username and password and creates a session
+</span><span id="__span-8-3"><a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>- A protected endpoint that returns user-specific data only if the user is logged in
+</span><span id="__span-8-4"><a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>- A logout endpoint that invalidates the session
+</span><span id="__span-8-5"><a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>- Use Azure Managed Redis for session storage
+</span><span id="__span-8-6"><a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>Please generate the complete codebase including the Maven `pom.xml`, application configuration, controllers, services, and any other necessary components. Also, provide a Dockerfile to containerize the application for deployment to Azure Container Apps.
+</span><span id="__span-8-7"><a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>- Build a simple UI using Thymeleaf to demonstrate login, protected content access, and logout functionality.
+</span><span id="__span-8-8"><a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>- Store that app in folder `prototype-2-redis-session-management`
+</span><span id="__span-8-9"><a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>- Use Java LTS 21 and Spring Boot 3.x
+</span><span id="__span-8-10"><a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>- Keep as much as possible from the existing codebase
+</span></code></pre></div>
+</div>
+<p>The agent will take its time to build the new codebase. Once it is done you should have a complete codebase for the second prototype in the folder <code>prototype-2-redis-session-management</code>.</p>
+<p><strong>Let the agent deploy the solution to Azure Container Apps with a prompt!</strong></p>
+<p>There still might be some issues during deployment. If that is the case leverage the agent to help you troubleshoot the issues. We suggest to nudge the agent with the error messages you get during deployment to get help on how to fix them.</p>
+<p>One of the issues that might occur:</p>
+<ul>
+<li>
+<p>The agent might try to create an ACR in the bicep script. This is NOT required for this deployment method! You can simply use <code>az containerapp up</code> with JAR and dockerfile and it will leverage buildpacks to build the container image for you automatically. Furthermore the <code>az containerapp up</code> command will automatically create a temporary ACR for you behind the scenes. Tell the agent to remove the ACR creation from the bicep script!</p>
+</li>
+<li>
+<p>Check if you have multiple replicas enabled for the Container App. This is required to prove that session management is working across multiple instances.</p>
+</li>
+<li>
+<p>Disable session stickiness for the Container App to prove that session management is working without sticky sessions.</p>
+</li>
+<li>
+<p>Always tell the agent to make the adjustments in your <code>deploy.sh</code> script so that you have ONE script that does everything for you!</p>
+</li>
+</ul>
+<h3 id="verifying-session-management-with-redis">Verifying session management with Redis<a class="headerlink" href="#verifying-session-management-with-redis" title="Permanent link">&para;</a></h3>
+<p>Once the application is deployed you can access the application URL in your browser. You should be able to login successfully even with multiple replicas and no sticky sessions enabled. This proves that externalized session management with Azure Managed Redis is working as expected. Ask the agent to get the portal url and check if multiple instances are there, session stickiness is disabled and Redis is connected properly.</p>
+<h1 id="creating-a-summary-of-the-prototype-demo-flow">Creating a summary of the prototype demo flow<a class="headerlink" href="#creating-a-summary-of-the-prototype-demo-flow" title="Permanent link">&para;</a></h1>
+<h2 id="instructions-to-showcase-the-prototypes">Instructions to showcase the prototypes<a class="headerlink" href="#instructions-to-showcase-the-prototypes" title="Permanent link">&para;</a></h2>
+<p>Let the agent build a small readme for you that helps you showcase both prototypes to your customers. Use the following prompt in a new chat window of your custom agent:</p>
+<div class="admonition abstract">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-9-1"><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>Please help us to build a small readme that helps us to showcase both prototypes to our customers. The readme should include instructions on how to deploy and test both prototypes, highlighting the differences between session affinity and externalized session management with Redis.
+</span><span id="__span-9-2"><a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>
+</span><span id="__span-9-3"><a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>- It is also important to have a small table that summarizes the key differences between both approaches including pros and cons.
+</span><span id="__span-9-4"><a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>
+</span><span id="__span-9-5"><a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>- It should have a nice step-by-step structure with clear instructions.
+</span><span id="__span-9-6"><a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a>
+</span><span id="__span-9-7"><a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>- Save this readme in the root folder of the repository as `CUSTOMER_README.md`.
+</span></code></pre></div>
+</div>
+<p>You should have a lovely readme in the root folder of your repository now that you can share with your customers to showcase both prototypes and the differences between session affinity and externalized session management with Redis.</p>
+<h1 id="clean-up">Clean up<a class="headerlink" href="#clean-up" title="Permanent link">&para;</a></h1>
+<h2 id="of-resources">Of Resources<a class="headerlink" href="#of-resources" title="Permanent link">&para;</a></h2>
+<p>Remember to clean up the Azure resources you have created to avoid unnecessary costs. You can do this by deleting the resource group that contains all the resources for the prototypes.</p>
+<p>Let the agent help you with a prompt:</p>
+<div class="admonition abstract">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-10-1"><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>Please help us to build a deployment script `cleanup.sh` that deletes all the resource groups containing all the resources for the prototypes within this repository to avoid unnecessary costs.
+</span></code></pre></div>
+</div>
+<p>Another solution would be to tell the agent to leverage Azure MCP server to interact with Azure CLI to delete the resources directly from the chat window.</p>
+<div class="admonition abstract">
+<div class="language-text highlight"><pre><span></span><code><span id="__span-11-1"><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>Please leverage the Azure MCP server to delete all resource groups that were created for the prototypes to avoid unnecessary costs.
+</span></code></pre></div>
+</div>
+<h2 id="code-repository">Code Repository<a class="headerlink" href="#code-repository" title="Permanent link">&para;</a></h2>
+<p>The complete code for all three prototypes is available in this repository:</p>
+<p><strong><a href="https://github.com/jeffreygroneberg/ghcp_session_stickiness_customer_case">GitHub Repository: ghcp_session_stickiness_customer_case</a></strong></p>
+<h2 id="conclusion">Conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>This customer case demonstrates how GitHub Copilot can:</p>
+<ul>
+<li>Accelerate prototype development</li>
+<li>Generate production-ready code following best practices</li>
+<li>Provide multiple solution approaches for comparison</li>
+<li>Integrate with cloud platforms like Azure</li>
+<li>Help teams make informed architectural decisions</li>
+</ul>
+<h3 id="key-takeaways">Key Takeaways<a class="headerlink" href="#key-takeaways" title="Permanent link">&para;</a></h3>
+<ol>
+<li><strong>No Session Management</strong>: Simplest but fails under horizontal scaling</li>
+<li><strong>Sticky Sessions</strong>: Quick fix with limitations (instance failures cause session loss)</li>
+<li><strong>Externalized Sessions</strong>: Most robust solution for distributed applications</li>
+</ol>
+<h3 id="next-steps">Next Steps<a class="headerlink" href="#next-steps" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Compare performance metrics across all three prototypes</li>
+<li>Evaluate operational complexity and costs</li>
+<li>Choose the solution that best fits your requirements</li>
+<li>Plan migration strategy for production implementation</li>
+</ul>
+<div class="admonition success">
+<p class="admonition-title">Workshop Complete</p>
+<p>You've successfully explored three different approaches to session management in Spring Boot applications using GitHub Copilot!</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/Azure-Samples/github-copilot-hands-on/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.sections", "navigation.expand", "navigation.indexes", "navigation.top", "toc.follow", "content.code.copy", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      
+        <script src="https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js"></script>
+      
+        <script src="../../javascripts/tablesort.js"></script>
+      
+    
+  </body>
+</html>
