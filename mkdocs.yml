@@ -95,5 +95,8 @@ nav:
       - Build Your Own MCP Server: hands-on/mcp-server-starter.md
       - MCP Fiar Game: hands-on/mcp-fiar.md
     - Other Labs: hands-on/other-labs.md
+  - Customer Stories: 
+    - Spring Boot Session Management Customer Case: customer-stories/customer-story-1.md
+    - Multi-Agent Systems with MCP and External APIs: customer-stories/customer-story-2.md
   - Future Roadmap: future-roadmap.md
   - RAG Extension Lab: rag-extension-lab.md
