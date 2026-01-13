@@ -44,7 +44,7 @@ You can create a PAT by following the instructions in the [GitHub documentation]
 
 We are using the following MCP servers in this demo:
 
-- [GitHub Copilot MCP](https://github.com/github/github-mcp-server)
+- [GitHub MCP](https://github.com/github/github-mcp-server)
     - This is the MCP server that gives GitHub Copilot access to the GitHub API and allows you to generate issues, read repository information, and more.
 - [Playwright MCP](https://github.com/microsoft/playwright-mcp)
     - This is the MCP server that gives GitHub Copilot access to the Playwright API and allows you to generate tests, read browser information, and more.

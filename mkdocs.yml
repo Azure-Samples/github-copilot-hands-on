@@ -93,6 +93,7 @@ nav:
     - MCP: 
       - Image Gallery with MCP: hands-on/gh-gallery-mcp.md
       - Build Your Own MCP Server: hands-on/mcp-server-starter.md
+      - MCP Fiar Game: hands-on/mcp-fiar.md
     - Other Labs: hands-on/other-labs.md
   - Future Roadmap: future-roadmap.md
   - RAG Extension Lab: rag-extension-lab.md
