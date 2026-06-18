@@ -2,8 +2,6 @@
 
 This repository contains a GitHub Copilot workshop created by Microsoft Germany Cloud Solution Architects. It helps customers get hands-on experience with Copilot across everyday coding, test generation, API clients, agentic workflows, and Model Context Protocol (MCP) scenarios.
 
-The canonical sample repository is [`Azure-Samples/github-copilot-hands-on`](https://github.com/Azure-Samples/github-copilot-hands-on). This fork is used to prepare changes safely before opening a pull request back to Azure-Samples.
-
 ## What is in this repo?
 
 | Path | Purpose |
