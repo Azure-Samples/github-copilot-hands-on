@@ -4,8 +4,8 @@ This customer case showcases how we leveraged GitHub Copilot end-to-end to solve
 
 ## Lab Overview
 
-**Duration**: 2-3 hours  
-**Difficulty**: Advanced  
+**Duration**: 2-3 hours
+**Difficulty**: Advanced
 **Prerequisites**:
 
 - Java LTS 21 knowledge
@@ -149,7 +149,7 @@ Use the following custom instructions for your agent tailored to Spring Boot dev
     ```
 
 !!! tip "Copilot Tip"
-    Read these custom instructions carefully before starting implementation. These instructions were generated with Claude Sonnet 4.5 based on the initial project description. You can further customize them to your needs.
+    Read these custom instructions carefully before starting implementation. These instructions were generated with a reasoning model based on the initial project description. You can further customize them to your needs.
 
 ### Step 2: Add MCP Servers
 
@@ -210,14 +210,14 @@ Use the following prompt to build the first prototype:
     - A protected endpoint that returns user-specific data only if the user is logged in
     - A logout endpoint that invalidates the session
     - Use in-memory session management (default behavior of Spring Boot)
-    
+
     Please generate the complete codebase including:
     - Maven `pom.xml`
     - Application configuration
     - Controllers, services, and any other necessary components
     - A Dockerfile to containerize the application for deployment to Azure Container Apps
     - A simple UI using Thymeleaf to demonstrate login, protected content access, and logout functionality
-    
+
     Store the app in folder `prototype-1-no-session-management`
     Use Java LTS 21 and Spring Boot 3.x
     ```

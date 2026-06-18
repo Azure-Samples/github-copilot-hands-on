@@ -1,85 +1,56 @@
-# Train the Trainer Guide 👨‍🏫
+# Train the Trainer Guide
 
-This guide is designed to help trainers deliver an effective GitHub Copilot workshop. It provides a structured approach to ensure all critical topics and hands-on activities are covered within the workshop timeframe.
+Use this guide to prepare and deliver a GitHub Copilot workshop with consistent messaging, realistic demos, and enough flexibility for different customer audiences.
 
-## Workshop Checklist ✅
+## Trainer checklist
 
-### Welcome & Introduction (10 min) 🎉
+### Before the workshop
 
-- Welcome participants
-- Introduce the workshop agenda, objectives, and outcomes
-- Briefly introduce GitHub Copilot and its importance
+- Confirm every participant has GitHub Copilot access.
+- Decide whether participants use local VS Code or GitHub Codespaces.
+- Pick labs that match the audience language stack and available time.
+- Test the selected labs from a clean clone.
+- For MCP labs, prepare the required tokens, server setup, and tool approval explanation.
 
-### Overview of GitHub Copilot (20 min) 🤖
+### Opening
 
-- What is GitHub Copilot?
-- How does it work?
-- Benefits and use cases
-- Provide reference to [GitHub Copilot Documentation](https://docs.github.com/en/copilot/overview-of-github-copilot)
+- Introduce the workshop goals and agenda.
+- Explain that Copilot is an assistant, not an autopilot replacement for engineering judgment.
+- Set expectations: generated output is non-deterministic and must be reviewed, tested, and committed like any other code.
 
-### Setting Up GitHub Copilot (30 min) ⚙️
+### Core concepts to explain
 
-- Step-by-step installation guide
-- Configuration steps
-- Troubleshooting common issues
-- Live demo of setup
-- Provide reference to [GitHub Copilot Setup Guide](https://docs.github.com/en/copilot/getting-started-with-github-copilot)
+- **Completions**: suggestions while typing.
+- **Ask-style help**: read-only chat for explanations, snippets, and learning.
+- **Agentic workflows**: Copilot can propose and apply changes, use tools, and run commands with user approval.
+- **Models**: start with Auto when available; choose a specialized model only when a task needs it.
+- **Context**: better context usually leads to better output.
+- **Validation**: tests, builds, diffs, and human review remain mandatory.
 
-### Break (10 min) ☕
+### Suggested flow
 
-### Hands-on Session 1: Basic Usage (30 min) 💻
+| Phase | Goal |
+| --- | --- |
+| Welcome and setup | Verify accounts, IDE, extension, and repository access. |
+| Fundamentals demo | Show completions, chat, context, and prompt iteration. |
+| First lab | Run a small lab such as HTML Image Gallery or Rock Paper Scissors. |
+| Review checkpoint | Compare generated output, discuss mistakes, and run tests or preview. |
+| Advanced lab | Use an API, agentic workflow, or MCP lab depending on the audience. |
+| Wrap-up | Discuss adoption, governance, security, and next steps. |
 
-- Practical exercises on basic usage:
-  - Code completion
-  - Suggestions
-  - Basic commands
-- Provide sample code repositories and exercise sheets
+## Trainer tips
 
-### Advanced Features of GitHub Copilot (20 min) 🚀
+1. Keep prompts visible so participants can compare prompt quality and output.
+2. Encourage small iterations instead of one huge prompt.
+3. Pause after generated changes and inspect the diff together.
+4. Use failures as teaching moments: ask Copilot to explain an error, then validate the fix.
+5. Avoid promising deterministic output. Labs should describe expected outcomes, not exact generated code.
+6. Have a fallback path for participants who cannot run a specific runtime locally.
 
-- Context-aware suggestions
-- Multi-language support
-- Integration with other tools
-- Live demo
+## Resources for trainers
 
-### Break (10 min) 🍪
-
-### Hands-on Session 2: Advanced Usage (60 min) 🔧
-
-- Practical exercises on advanced usage:
-  - Refactoring
-  - Generating complex code
-  - Using Copilot with different languages
-- Provide sample projects and exercise sheets
-
-### Best Practices and Limitations (20 min) 📝
-
-- Discuss best practices for using GitHub Copilot
-- Understanding its limitations
-
-### Break (10 min) 🧃
-
-### Q&A and Workshop Feedback (30 min) 💬
-
-- Open Q&A session
-- Gather feedback on the workshop
-- Discuss improvements and suggestions
-
-## Trainer Tips 💡
-
-1. **Preparation**: Familiarize yourself with all hands-on labs before the workshop
-2. **Timing**: Be mindful of time - have a timer visible to keep track
-3. **Technical Issues**: Prepare for common technical issues participants might face
-4. **Engagement**: Encourage questions and participation throughout the session
-5. **Examples**: Have real-world examples ready to demonstrate the value of GitHub Copilot
-6. **Flexibility**: Be prepared to adjust the pace based on the group's progress
-7. **Follow-up**: Provide resources for participants to continue learning after the workshop
-
-## Resources for Trainers 📚
-
-- [GitHub Copilot Documentation](https://docs.github.com/en/copilot)
-- [GitHub Copilot for Business](https://github.com/features/copilot)
+- [GitHub Copilot documentation](https://docs.github.com/en/copilot)
 - [GitHub Copilot Trust Center](https://resources.github.com/copilot-trust-center/)
-- [GitHub Copilot Research Paper](https://github.blog/2023-05-17-the-architecture-of-todays-llm-applications/)
-
-Remember, the goal is not just to teach the technical aspects of GitHub Copilot, but to inspire participants to incorporate AI-assisted coding into their development workflow! 🌟
+- [AI model comparison for GitHub Copilot](https://docs.github.com/en/copilot/reference/ai-models/model-comparison)
+- [VS Code AI documentation](https://code.visualstudio.com/docs/ai/overview)
+- [GitHub Changelog](https://github.blog/changelog/)

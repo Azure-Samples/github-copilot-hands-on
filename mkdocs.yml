@@ -1,6 +1,6 @@
 site_name: GitHub Copilot Hands-on Labs
-site_description: A comprehensive workshop for learning GitHub Copilot capabilities
-site_author: GitHub Copilot Workshop Team
+site_description: Hands-on workshop for learning GitHub Copilot with labs, agents, and MCP
+site_author: Microsoft Germany CSA Team
 repo_url: https://github.com/Azure-Samples/github-copilot-hands-on/
 repo_name: Azure-Samples/github-copilot-hands-on
 
@@ -90,13 +90,13 @@ nav:
     - APIs:
       - Star Wars API in Java: hands-on/starwars-api.md
       - Star Wars API in Python: hands-on/starwars-api-python.md
-    - MCP: 
+    - MCP:
       - Image Gallery with MCP: hands-on/gh-gallery-mcp.md
       - Build Your Own MCP Server: hands-on/mcp-server-starter.md
       - MCP Fiar Game: hands-on/mcp-fiar.md
     - Other Labs: hands-on/other-labs.md
-  - Customer Stories: 
+  - Customer Stories:
     - Spring Boot Session Management Customer Case: customer-stories/customer-story-1.md
     - Multi-Agent Systems with MCP and External APIs: customer-stories/customer-story-2.md
-  - Future Roadmap: future-roadmap.md
-  - RAG Extension Lab: rag-extension-lab.md
+  - Keeping Current: future-roadmap.md
+  - Optional RAG Extension Lab: rag-extension-lab.md

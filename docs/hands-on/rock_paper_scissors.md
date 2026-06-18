@@ -4,8 +4,8 @@ In this hands-on lab, you'll build a Python implementation of a classic Rock Pap
 
 ## Lab Overview 📋
 
-**Duration**: 30-45 Minutes  
-**Difficulty**: Beginner to Intermediate  
+**Duration**: 30-45 Minutes
+**Difficulty**: Beginner to Intermediate
 **Prerequisites**:
 
 - Basic knowledge of Python and console applications
@@ -28,9 +28,9 @@ A Python console application that simulates a Rock Paper Scissors match with the
 We'll start by setting up a basic Python project structure. GitHub Copilot will help us create the necessary files and configurations.
 
 !!! tip "Copilot Tip"
-     You can ask Github Copilot Chat to provide you with the steps to create a Python based project with a prompt like: ``How can I create a Python based project, where I need one file for the game and another file for the testing?``
+     You can ask GitHub Copilot Chat to provide you with the steps to create a Python based project with a prompt like: ``How can I create a Python based project, where I need one file for the game and another file for the testing?``
 
-     You can use ``@workspace`` agent to 
+     You can use ``@workspace`` agent to
 
 Let's set up our project directory. Create an empty folder and navigate to it via terminal.
 
@@ -67,19 +67,19 @@ First, create a new file called `game.py` in your project directory and open the
     Start with a comment describing what you want to build, and GitHub Copilot will suggest code based on your description.
     After typing the comment, press Enter, and Copilot may suggest some initial code.
 
-Let's first create the basic structure for our game by implementing a class, which will include all helpful functions. Try typing the following comment: ``# Class that represents the scorer of the game ``. 
+Let's first create the basic structure for our game by implementing a class, which will include all helpful functions. Try typing the following comment: ``# Class that represents the scorer of the game ``.
 
 !!! note "You should have the following output in your IDE:"
     ```python
     # Rock Paper Scissors game implementation
 
-    # Class that represents the scorer of the game 
+    # Class that represents the scorer of the game
     class Scorer:
     ```
 
 #### Implementing the Scorer Class
 
-Now let's implement the constructor for our `Scorer` class.  
+Now let's implement the constructor for our `Scorer` class.
 
 Start typing the following comment and press Tab to accept Copilot's suggestion: ``initialize the scorer with two player scores``.
 
@@ -198,7 +198,7 @@ Start implementing the `main` function. Here are the predefined moves for the bo
 
 !!! tip "Copilot Tip"
     If you are not satisfied with the overall suggestion of the main function, you can try to modify the comment you have provided.
-    
+
     Or, you can press ``Strg`` and then right arrow to only accept word by word.
 
 Accept Copilot's suggestion for the implementation. It should provide something like the following.
@@ -213,19 +213,19 @@ Accept Copilot's suggestion for the implementation. It should provide something 
     def main():
         player1_moves = ['scissors', 'paper', 'scissors', 'rock', 'rock']
         player2_moves = ['rock', 'rock', 'paper', 'scissors', 'paper']
-        
+
         scorer = Scorer()
-        
+
         for i in range(5):
             player1_move = player1_moves[i]
             player2_move = player2_moves[i]
-            
+
             print(f"Round {i + 1}:")
             print(f"Player 1 plays: {player1_move}")
             print(f"Player 2 plays: {player2_move}")
-            
+
             winner = determine_winner(player1_move, player2_move)
-            
+
             if winner == "tie":
                 print("It's a tie!")
             else:
@@ -233,9 +233,9 @@ Accept Copilot's suggestion for the implementation. It should provide something 
                 scorer.update_score(winner, player1_move if winner == "player1" else player2_move)
                 initial_scores = scorer.get_final_scores()
                 print(f"Initial Scores: Player 1: {initial_scores[0]}, Player 2: {initial_scores[1]}")
-            
+
             print("-" * 30)
-        
+
         final_scores = scorer.get_final_scores()
         print(f"Final Scores: Player 1: {final_scores[0]}, Player 2: {final_scores[1]}")
         print(scorer.get_winner())
@@ -276,7 +276,7 @@ At this point, your complete `game.py` should look something like the following:
             else:
                 print("Invalid move")
                 return 0
-            
+
         # Method to update the score based on the winner and the move
         def update_score(self, winner, move):
             points = self.calculate_points(move)
@@ -289,7 +289,7 @@ At this point, your complete `game.py` should look something like the following:
 
         def get_final_scores(self):
             return self.player1_score, self.player2_score
-        
+
         def get_winner(self):
             if self.player1_score > self.player2_score:
                 return "Player 1 wins!"
@@ -308,7 +308,7 @@ At this point, your complete `game.py` should look something like the following:
             return "player1"
         else:
             return "player2"
-        
+
     # Main function to simulate a 5-round match between Player 1 and Player 2 with predefined moves and score tracking
     # Print out detailed texts, results of each round and the final scores
     # predifned moves for Player 1 and Player 2:
@@ -317,19 +317,19 @@ At this point, your complete `game.py` should look something like the following:
     def main():
         player1_moves = ['scissors', 'paper', 'scissors', 'rock', 'rock']
         player2_moves = ['rock', 'rock', 'paper', 'scissors', 'paper']
-        
+
         scorer = Scorer()
-        
+
         for i in range(5):
             player1_move = player1_moves[i]
             player2_move = player2_moves[i]
-            
+
             print(f"Round {i + 1}:")
             print(f"Player 1 plays: {player1_move}")
             print(f"Player 2 plays: {player2_move}")
-            
+
             winner = determine_winner(player1_move, player2_move)
-            
+
             if winner == "tie":
                 print("It's a tie!")
             else:
@@ -337,9 +337,9 @@ At this point, your complete `game.py` should look something like the following:
                 scorer.update_score(winner, player1_move if winner == "player1" else player2_move)
                 initial_scores = scorer.get_final_scores()
                 print(f"Initial Scores: Player 1: {initial_scores[0]}, Player 2: {initial_scores[1]}")
-            
+
             print("-" * 30)
-        
+
         final_scores = scorer.get_final_scores()
         print(f"Final Scores: Player 1: {final_scores[0]}, Player 2: {final_scores[1]}")
         print(scorer.get_winner())
@@ -389,7 +389,7 @@ Type the class definition and Copilot will suggest the methods. Try typing: ```#
     class TestGame(unittest.TestCase):
     ```
 
-Let's add our first test method to test the `determine_winner` function. 
+Let's add our first test method to test the `determine_winner` function.
 
 Use Copilot to generate test cases by either typing a comment beforehand, or by typing the method name.
 
@@ -415,25 +415,25 @@ Accept Copilot's suggestions for the test cases, and make sure the tests align w
 Now let's add a test method for the `Scorer` class.
 
 !!! tip "Copilot Tip"
-     For more complex test cases, you can use Copilot's `/tests` command leveraging the inline chat function.
+     For more complex test cases, ask Copilot Chat or an agentic coding workflow to generate focused tests for the class you have open.
 
-In the editor, press Ctrl+I to open the **inline chat** and type:
-`/tests Write test cases for the Scorer class to verify point calculation and score updates`
+Use a prompt such as:
+`Write test cases for the Scorer class to verify point calculation and score updates.`
 
-The GHCP inline chat looks like below:
+Copilot can suggest tests that you can review, adjust, and add to your test file:
 
-![image: GHCP inline chat](../assets/images/python/GHCP_inline_chat_tests.png){ width=500px }
+![image: Copilot-generated test example](../assets/images/python/GHCP_inline_chat_tests.png){ width=500px }
 
-You can iterate to get a better result, ask to fix a code that you have written, or even ask to understand a unclear code snippet. Explore pre-written prompts by typing ``/``, e.g. ``/tests``.
+You can iterate to get a better result, ask Copilot to fix code you have written, or ask it to explain an unclear snippet.
 
-After receiving Copilot's suggestions, you can adapt them to your code. 
+After receiving Copilot's suggestions, you can adapt them to your code.
 
 Your test method for the scorer class can look below.
 
 ??? abstract "Sample tests for the scorer class"
     ```python
-    # used inline GHCP chat with the following prompt:
-        # /tests Write test cases for the Scorer class to verify point calculation and score updates
+    # Generated with Copilot using the prompt:
+        # Write test cases for the Scorer class to verify point calculation and score updates.
         def test_calculate_points(self):
             scorer = Scorer()
             self.assertEqual(scorer.calculate_points("rock"), 1)
@@ -499,7 +499,7 @@ At this point, your complete `test_game.py` can look like this:
 
     # Test class for the Scorer class
     class TestGame(unittest.TestCase):
-        
+
         # test the determine_winner function
         def test_determine_winner(self):
             self.assertEqual(determine_winner("rock", "scissors"), "player1")
@@ -511,9 +511,9 @@ At this point, your complete `test_game.py` can look like this:
             self.assertEqual(determine_winner("rock", "rock"), "tie")
             self.assertEqual(determine_winner("paper", "paper"), "tie")
             self.assertEqual(determine_winner("scissors", "scissors"), "tie")
-        
-        # used inline GHCP chat with the following prompt:
-        # /tests Write test cases for the Scorer class to verify point calculation and score updates
+
+        # Generated with Copilot using the prompt:
+        # Write test cases for the Scorer class to verify point calculation and score updates.
         def test_calculate_points(self):
             scorer = Scorer()
             self.assertEqual(scorer.calculate_points("rock"), 1)
@@ -601,7 +601,7 @@ python game.py
 If you have time, try implementing these advanced features:
 
 !!! tip "Copilot Tip"
-     Ask Github Copilot to help you implement these advanced features by describing what you want to achieve.
+     Ask GitHub Copilot to help you implement these advanced features by describing what you want to achieve.
 
 1. **Hint System**: Add a hint system that suggests a move to the player
 
@@ -627,11 +627,11 @@ See if you can use Copilot to find out the complexity (BigO notation) of the cod
 
 1. Highlight all of the code with Ctrl/Cmd+A.
 
-2. Press Ctrl/Cmd+I to open the inline chat.
+2. Open Copilot Chat.
 
-3. Type ``/doc``
+3. Ask Copilot to document the function.
 
-4. Ask Copilot Chat to document the function.
+4. Review the generated comments before keeping them.
 
 ### Use Copilot to simplify your code
 
@@ -641,7 +641,7 @@ See if you can use Copilot to find out the complexity (BigO notation) of the cod
 
 ### Got Errors?
 
-Copilot Chat can help with that too! Just copy the error message and paste it into Chat. Often that's all Copilot needs to resolve your issue. If you iterate with the **Agent Mode**, GHCP can also see your error messages in the terminal and directly modify your code accordingly.
+Copilot Chat can help with that too! Copy the error message and paste it into chat. If you use an agentic workflow, Copilot can also inspect terminal output and propose code changes directly; review those changes before keeping them.
 
 ## Summary 📝
 

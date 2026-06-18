@@ -1,37 +1,37 @@
-# Welcome to GitHub Copilot Workshop! 🚀
+# Welcome to the GitHub Copilot Workshop
 
-Welcome to our comprehensive GitHub Copilot workshop! This interactive guide will help you explore the powerful capabilities of GitHub Copilot and learn how to leverage AI-assisted coding to enhance your development workflow.
+This workshop helps developers experience GitHub Copilot through practical labs. You will use Copilot for code completion, read-only help, code generation, tests, refactoring, agentic workflows, and MCP-based tool integration.
 
-## What is GitHub Copilot? ✨
+## What is GitHub Copilot?
 
-GitHub Copilot is an AI pair programmer that helps you write better code faster. It draws context from comments and code to suggest individual lines and whole functions instantly. GitHub Copilot is powered by OpenAI's Codex, a generative pretrained language model that has been trained on a vast corpus of text and code.
+GitHub Copilot is an AI coding assistant integrated into developer tools such as Visual Studio Code, Visual Studio, JetBrains IDEs, GitHub.com, and GitHub CLI. It can use your prompt, editor context, repository context, selected model, and approved tools to help you understand, write, improve, and test code.
 
-## What You'll Learn 📚
+In this workshop we use these concepts:
 
-Throughout this workshop, you'll:
+- **Code completions** for suggestions while typing.
+- **Ask-style chat** for read-only explanations, learning, and code snippets.
+- **Agentic coding workflows** for changes across files, terminal commands, tests, and tool use with your approval.
+- **MCP tools** to extend Copilot with external capabilities such as GitHub and Playwright operations.
+- **Model selection** to match the task, usually starting with Auto when it is available.
 
-- Understand how GitHub Copilot works and its capabilities
-- Learn best practices for working with AI-assisted coding
-- Explore various programming languages and scenarios
-- Complete hands-on exercises to reinforce your learning
-- Discover tips and tricks to maximize your productivity
+## What you will learn
 
-## Workshop Structure 🗂️
+By the end of the workshop, you should be able to:
 
-This workshop is designed to be flexible and can be completed in either a 2-hour or 4-hour format. The content is organized into:
+1. Explain where Copilot can help in a developer workflow.
+2. Use Copilot safely with clear prompts, context, review, and tests.
+3. Choose between read-only help and agentic workflows.
+4. Apply Copilot to web, Python, Java, API, and MCP scenarios.
+5. Keep generated code under developer control through review and validation.
 
-1. **Introduction and Setup**: Get familiar with GitHub Copilot and ensure your environment is properly configured
-2. **Hands-on Labs**: Practice using GitHub Copilot with various programming languages and scenarios
-3. **Advanced Topics**: Explore more complex use cases and techniques
+## Workshop structure
 
-## Getting Started 🏁
+The content is organized into:
 
-To make the most of this workshop:
+1. **Introduction and setup** - accounts, IDE setup, Copilot basics, and safety guidance.
+2. **Hands-on labs** - practical exercises for fundamentals, APIs, and tests.
+3. **Agentic and MCP scenarios** - advanced labs that use tools and multi-step workflows.
 
-1. Ensure you have a GitHub account with GitHub Copilot access
-2. Have a compatible code editor installed (VS Code recommended)
-3. Follow the hands-on labs in sequence for the best learning experience
-
-Ready to supercharge your coding with AI? Let's dive in! 🏊‍♂️
+Start with the [Workshop Overview](workshop-overview.md), then choose the [hands-on labs](hands-on/index.md) that fit your audience and available time.
 
 ![GitHub Copilot](assets/images/custom/github-copilot-banner.png)

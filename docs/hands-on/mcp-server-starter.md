@@ -4,7 +4,7 @@ In this tutorial, we'll build a simple MCP (Model Context Protocol) weather serv
 
 ## Lab Overview 📋
 
-**Duration**: 60-90 minutes  
+**Duration**: 60-90 minutes
 **Difficulty**: Intermediate
 
 This lab is mainly based on the Model Context Protocol's [quickstart guide](https://modelcontextprotocol.io/quickstart/server) to create an MCP server, with additional VS Code integration guides, screenshots, and step-by-step instructions for GitHub Copilot integration.
@@ -55,8 +55,8 @@ Choose your preferred programming language to build the MCP server:
     * Python 3.10 or higher installed
     * You must use the Python MCP SDK 1.2.0 or higher
 
-    ### Set up your environment    
-    
+    ### Set up your environment
+
     First, let's install `uv` and set up our Python project and environment:
 
     === "Windows"
@@ -242,8 +242,8 @@ Choose your preferred programming language to build the MCP server:
 
     For TypeScript, make sure you have the latest version of Node installed.
 
-    ### Set up your environment    
-    
+    ### Set up your environment
+
     First, let's install Node.js and npm if you haven't already. You can download them from [nodejs.org](https://nodejs.org/).
     Verify your Node.js installation:
 
@@ -619,7 +619,7 @@ Choose your preferred programming language to build the MCP server:
     <?xml version="1.0" encoding="UTF-8"?>
     <project xmlns="http://maven.apache.org/POM/4.0.0"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+             xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
              https://maven.apache.org/xsd/maven-4.0.0.xsd">
         <modelVersion>4.0.0</modelVersion>
         <parent>
@@ -706,7 +706,7 @@ Choose your preferred programming language to build the MCP server:
                     .body(JsonNode.class);
 
                 String forecastUrl = pointsResponse.path("properties").path("forecast").asText();
-                
+
                 // Get forecast data
                 JsonNode forecastResponse = restClient.get()
                     .uri(forecastUrl)
@@ -715,7 +715,7 @@ Choose your preferred programming language to build the MCP server:
 
                 StringBuilder forecast = new StringBuilder();
                 JsonNode periods = forecastResponse.path("properties").path("periods");
-                
+
                 for (int i = 0; i < Math.min(5, periods.size()); i++) {
                     JsonNode period = periods.get(i);
                     forecast.append(String.format("""
@@ -733,7 +733,7 @@ Choose your preferred programming language to build the MCP server:
                         period.path("detailedForecast").asText()
                     ));
                 }
-                
+
                 return forecast.toString();
             } catch (Exception e) {
                 return "Unable to fetch forecast data: " + e.getMessage();
@@ -772,7 +772,7 @@ Choose your preferred programming language to build the MCP server:
                         props.path("instruction").asText()
                     ));
                 }
-                
+
                 return alerts.toString();
             } catch (Exception e) {
                 return "Unable to fetch alerts data: " + e.getMessage();
@@ -877,7 +877,7 @@ Choose your preferred programming language to build the MCP server:
 
     plugins {
         kotlin("plugin.serialization") version "1.9.10"
-        id("com.github.johnrengelman.shadow") version "8.1.1"
+        id("com.GitHub.johnrengelman.shadow") version "8.1.1"
     }
     ```
 
