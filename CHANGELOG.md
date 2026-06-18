@@ -1,13 +1,5 @@
-## [project-title] Changelog
+# Changelog
 
-<a name="x.y.z"></a>
-# x.y.z (yyyy-mm-dd)
+This repository is maintained as workshop content rather than a versioned package. Use pull request descriptions and commit history to understand changes.
 
-*Features*
-* ...
-
-*Bug Fixes*
-* ...
-
-*Breaking Changes*
-* ...
+For notable workshop refreshes, add dated entries here with a short summary of updated labs, documentation, or tooling.

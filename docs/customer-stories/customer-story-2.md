@@ -4,8 +4,8 @@ This customer case showcases how we leveraged GitHub Copilot end-to-end to build
 
 ## Lab Overview
 
-**Duration**: 1-2 hours  
-**Difficulty**: Advanced  
+**Duration**: 1-2 hours
+**Difficulty**: Advanced
 **Prerequisites**:
 
 - Python programming knowledge

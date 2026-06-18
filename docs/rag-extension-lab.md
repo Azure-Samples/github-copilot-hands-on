@@ -1,12 +1,15 @@
-# Building a RAG Extension for GitHub Copilot Chat 🤖💬
+# Optional Draft: Building a RAG Extension for GitHub Copilot Chat
 
-This hands-on lab will guide you through building a Retrieval-Augmented Generation (RAG) extension for GitHub Copilot Chat. This extension will enhance Copilot's capabilities by allowing it to access and leverage your own documentation or knowledge base.
+!!! warning "Draft lab"
+    This page is not yet a complete customer-ready hands-on lab. Use it as a discussion outline or maintainer backlog item until the implementation steps have been tested end to end.
+
+This draft lab outlines how a Retrieval-Augmented Generation (RAG) extension could enhance Copilot-style assistance by connecting an assistant to your own documentation or knowledge base.
 
 ## Lab Overview 📋
 
-**Duration**: 1-2 hours  
-**Difficulty**: Advanced  
-**Prerequisites**: 
+**Duration**: 1-2 hours
+**Difficulty**: Advanced
+**Prerequisites**:
 - Familiarity with GitHub Copilot
 - Basic understanding of RAG systems
 - Experience with JavaScript/TypeScript
@@ -153,15 +156,12 @@ By the end of this lab, you'll have:
 - [GitHub Copilot Extension API](https://github.com/microsoft/vscode-copilot-release)
 - [RAG Architecture Patterns](https://www.pinecone.io/learn/rag/)
 
-## Coming Soon! 🔜
+## Workshop status
 
-This hands-on lab is currently under development and will be available in the next workshop update. Stay tuned for the complete implementation guide!
+Before using this with customers, complete and validate:
 
-In the meantime, you can prepare by:
-
-1. Familiarizing yourself with VS Code extension development
-2. Learning about vector embeddings and semantic search
-3. Exploring the LangChain framework
-4. Gathering documentation you'd like to use with your RAG system
-
-We're excited to guide you through building this powerful extension in the upcoming workshop! 🚀
+1. A runnable sample extension repository.
+2. Current VS Code extension APIs and package commands.
+3. Secure handling for keys, documents, and customer data.
+4. Clear validation steps and expected outcomes.
+5. A decision on whether this should remain a Copilot extension lab or be reframed as an MCP/RAG tool lab.

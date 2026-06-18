@@ -1,58 +1,58 @@
-# Workshop Overview 🔍
+# Workshop Overview
 
-This workshop is designed to provide a comprehensive introduction to GitHub Copilot and its capabilities. Whether you're a beginner or an experienced developer, this workshop will help you understand how to leverage AI-assisted coding to enhance your development workflow.
+This workshop introduces GitHub Copilot through practical exercises. It works for beginner-friendly introductions as well as deeper sessions that show agentic workflows and MCP tools.
 
-## Workshop Structure 📋
+## Workshop structure
 
 ![Workshop Overview](assets/images/Workshop_Overview.png)
 
-The workshop is flexible and can be conducted in either a 2-hour or 4-hour format, depending on your needs and time constraints. The content is organized to provide a progressive learning experience, starting with the basics and moving on to more advanced topics.
+Use the structure as a menu rather than a fixed script:
 
-## Workshop Formats ⏱️
+1. **Introduction** - what Copilot is, where it fits, and how developers stay in control.
+2. **Setup** - GitHub Copilot access, VS Code, extensions, and lab prerequisites.
+3. **Fundamentals** - completions, chat, prompts, code review, and tests.
+4. **Hands-on labs** - choose labs by language, skill level, and available time.
+5. **Agentic workflows** - use Copilot with files, tools, terminal commands, and MCP servers.
 
-### 2-Hour Workshop
+## Workshop formats
 
-The 2-hour workshop focuses on:
+### Short format
 
-- Introduction to GitHub Copilot
-- Basic setup and configuration
-- Hands-on experience with 1-2 selected labs
-- Key best practices and tips
+Use this when you have limited time:
 
-### 4-Hour Workshop
+- Introduction to Copilot and responsible usage.
+- Setup verification.
+- One fundamentals lab, such as HTML Image Gallery or Rock Paper Scissors.
+- Group discussion on prompt quality, review, and validation.
 
-The 4-hour workshop includes everything in the 2-hour format, plus:
+### Extended format
 
-- More in-depth exploration of GitHub Copilot features
-- Additional hands-on labs
-- Advanced usage scenarios
-- Extended Q&A and discussion
+Use this when participants can spend more time building:
 
-## Hands-On Labs 🧪
+- Everything in the short format.
+- API client lab in Python or Java.
+- Agentic/MCP lab such as HTML Image Gallery with MCP or Build Your Own MCP Server.
+- Wrap-up with customer use cases and adoption patterns.
 
-Our workshop includes a variety of hands-on labs to give you practical experience with GitHub Copilot across different programming languages and scenarios:
+## Lab catalog
 
-| Name | Language | Description | Length |
-| ---- | -------- | ----------- | ------ |
-| **Javascript Calculator** | HTML/Javascript | A small app that serves as a good starter project | 20 mins |
-| **Timer and Selector** | HTML/CSS/React | Building components for workshop trainers | 30 mins |
-| **Polaroid Image Gallery** | HTML/Javascript | Building a small image gallery with animations | 45 mins |
-| **Rock Paper Scissor** | Python | A slightly more advanced app | 30 mins |
-| **Restaurant API + Deployment** | Python/Azure | Creating and deploying a simple API to Azure | 45 mins |
-| **Star Wars API Client** | Python | Creating a library to retrieve Star Wars character data | 1 hour |
-| **Star Wars API Client** | Java | Creating a library to retrieve Star Wars character data | 1 hour |
-| **API Testing with SWAPI** | C# | Implementing tests for an API | 30 mins |
-| **C Sharp Web App** | C# | Working with .NET Web Technologies and unit tests | 1 hour |
-| **Interest Calculator** | C++ | Building an interest calculator with unit tests | 30 mins |
+| Area | Lab | Language / tools | Description |
+| --- | --- | --- | --- |
+| Fundamentals | [HTML Image Gallery](hands-on/html-gallery.md) | HTML, CSS, JavaScript | Build and improve a small image gallery. |
+| Fundamentals | [Rock Paper Scissors](hands-on/rock_paper_scissors.md) | Python | Generate game logic and tests. |
+| APIs | [Star Wars API in Python](hands-on/starwars-api-python.md) | Python | Build an API client with data classes and tests. |
+| APIs | [Star Wars API in Java](hands-on/starwars-api.md) | Java, Maven | Build an API client with DTOs, interfaces, and tests. |
+| Agentic / MCP | [HTML Image Gallery with MCP](hands-on/gh-gallery-mcp.md) | HTML, GitHub MCP, Playwright MCP | Use tools and an agentic workflow to create issues, implement changes, and test. |
+| Agentic / MCP | [Build Your Own MCP Server](hands-on/mcp-server-starter.md) | Python, Java, TypeScript options | Build a weather MCP server and connect it to Copilot. |
+| Agentic / MCP | [Four in a Row MCP Game](hands-on/mcp-fiar.md) | Java, Spring Boot, MCP | Play and inspect a game through Copilot and a custom MCP server. |
+| Extended | [Other Labs](hands-on/other-labs.md) | Multiple | External labs for additional languages and scenarios. |
 
-## Learning Objectives 🎯
+## Learning objectives
 
-By the end of this workshop, participants will be able to:
+By the end of the workshop, participants should be able to:
 
-1. Understand how GitHub Copilot works and its capabilities
-2. Configure and use GitHub Copilot effectively in their development environment
-3. Apply best practices for working with AI-assisted coding
-4. Use GitHub Copilot across different programming languages and scenarios
-5. Identify opportunities to improve productivity with AI assistance
-
-Let's embark on this exciting journey to explore the future of coding with GitHub Copilot! 🚀
+1. Configure and use GitHub Copilot in their development environment.
+2. Provide useful context and prompts.
+3. Choose read-only help or agentic workflows depending on the task.
+4. Review and validate Copilot-generated changes.
+5. Extend Copilot with tools such as MCP servers where appropriate.

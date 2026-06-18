@@ -1,96 +1,81 @@
 # GitHub Copilot Hands-on Labs
 
-Welcome to the GitHub Copilot Hands-on Labs repository. This repository provides a collaborative environment for experimenting with GitHub Copilot across various languages and frameworks through hands-on demos.
+This repository contains a GitHub Copilot workshop created by Microsoft Germany Cloud Solution Architects. It helps customers get hands-on experience with Copilot across everyday coding, test generation, API clients, agentic workflows, and Model Context Protocol (MCP) scenarios.
 
-## Purpose
+The canonical sample repository is [`Azure-Samples/github-copilot-hands-on`](https://github.com/Azure-Samples/github-copilot-hands-on). This fork is used to prepare changes safely before opening a pull request back to Azure-Samples.
 
-This repository is designed to:
+## What is in this repo?
 
-- Provide a practical learning environment to explore GitHub Copilot.
-- Showcase demos that span different programming languages, deployment scenarios, and integrations.
-- Serve as a community-driven resource where developers can contribute their own demos and enhancements.
+| Path | Purpose |
+| --- | --- |
+| `docs/` | Published MkDocs workshop content. Start here when delivering or previewing the workshop. |
+| `labs/` | Starter code, sample projects, and supporting lab instructions. |
+| `mkdocs.yml` | MkDocs Material site configuration and navigation. |
+| `.github/workflows/deploy-mkdocs.yml` | GitHub Pages deployment workflow for the docs site. |
 
-## What's Included
+## Workshop content
 
-- [GitHub Copilot Hackathon](#github-copilot-hands-on)
-  - [Pre-requisites](#pre-requisites)
-- [Labs](#labs)
-  - [Python](#python)
-  - [Java](#java)
-  - [JavaScript & HTML](#html)
-  - ...
+The workshop is designed to be flexible. Trainers can run a short introduction with one or two fundamentals labs, or a longer session that includes agentic and MCP scenarios.
 
-## Getting Started
+| Area | Labs |
+| --- | --- |
+| Fundamentals | HTML Image Gallery, Rock Paper Scissors |
+| API clients | Star Wars API in Python, Star Wars API in Java |
+| Agentic workflows and MCP | HTML Image Gallery with MCP, Build Your Own MCP Server, Four in a Row MCP Game |
+| Extended resources | External labs linked from the "Other Labs" page |
 
-- x
+## Prerequisites
 
-## Pre-requisites
+Participants need:
 
-**GitHub Copilot access**
+- A GitHub account with GitHub Copilot access.
+- [Visual Studio Code](https://code.visualstudio.com/) with the GitHub Copilot extension enabled.
+- Git installed locally, or access to GitHub Codespaces.
+- Runtime dependencies for the selected lab, for example Python, Java and Maven, Node.js, Docker, or .NET.
 
-Users should hve access to copilot licenses. If you still do not have an active Copilot license, request your copilot admin to assign you a copilot seat.
+Some MCP labs also require a GitHub personal access token and explicit tool approval in Copilot Chat.
 
+## Preview the workshop locally
 
-### IDE Extensions
+Install MkDocs Material and start the local preview server:
 
-Install the Copilot Extension for you IDE:
-
-- [Visual Studio Code Copilot Extension](https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot?tool=vscode)
-- [Visual Studio 2022 Copilot Extension](https://learn.microsoft.com/en-us/visualstudio/ide/visual-studio-github-copilot-extension?view=vs-2022)
-- [Visual Studio 2022 Copilot Chat Extension](https://learn.microsoft.com/en-us/visualstudio/ide/visual-studio-github-copilot-chat?view=vs-2022)
-- [JetBrains Copilot Extension](https://docs.github.com/en/copilot/using-github-copilot/getting-code-suggestions-in-your-ide-with-github-copilot?tool=jetbrains)
-
-### Work locally
-
-**VisualStudio Code**
-
-https://code.visualstudio.com/
-
-**Install Docker (Optional)**
-
-https://docs.docker.com/engine/install/
-
-**For Nodejs**
-
-- [Install Node and npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
-- Install mocha: 
-
-Run:
-
-``` bash
- npm install --global mocha
- npm install axios
+```bash
+python -m pip install mkdocs-material
+mkdocs serve
 ```
 
-**For .NET**
+Then open the local URL printed by MkDocs. Before publishing documentation changes, run:
 
-[Install .Net](https://dotnet.microsoft.com/download)
+```bash
+mkdocs build --strict
+```
 
-**For Java**
+## Working from a fork
 
-- [Install Java](https://learn.microsoft.com/en-us/java/openjdk/install)
-- [Install Maven](https://maven.apache.org/install.html)
+Use your fork for changes and target the Azure-Samples repository when opening a pull request.
 
-**For Python**
-- [Install Python](https://www.python.org/downloads/)
+```bash
+git remote add upstream https://github.com/Azure-Samples/github-copilot-hands-on.git
+git fetch upstream
+git checkout -b <your-branch> upstream/main
+# make changes
+git push origin <your-branch>
+```
 
-**For C++**
-- [Install cmake](https://cmake.org/download/)
+Open the pull request with:
 
-### Quickstart
-(Add steps to get up and running quickly)
+- **Base repository**: `Azure-Samples/github-copilot-hands-on`
+- **Base branch**: `main`
+- **Head repository**: your fork
+- **Compare branch**: your feature branch
 
-1. git clone [repository clone url]
-2. cd [repository name]
-3. ...
+## Keeping the workshop current
 
-## Resources
+GitHub Copilot changes quickly. Keep volatile topics link-first: explain how to choose a model, mode, or tool at a high level, then link to the official documentation for the latest details.
 
-(Any additional resources or related projects)
+Useful references:
 
-- Link to supporting information
-- Link to similar sample
-- ...
----
-
-Happy coding and exploring GitHub Copilot!
+- [GitHub Copilot documentation](https://docs.github.com/en/copilot)
+- [AI model comparison for GitHub Copilot](https://docs.github.com/en/copilot/reference/ai-models/model-comparison)
+- [GitHub Changelog](https://github.blog/changelog/)
+- [VS Code AI documentation](https://code.visualstudio.com/docs/ai/overview)

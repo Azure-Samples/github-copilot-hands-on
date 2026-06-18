@@ -1,13 +1,13 @@
 # Four in a Row MCP Game with GitHub Copilot
 
-Welcome to this exciting exercise where you'll experience the power of GitHub Copilot's agent mode integrated with a custom Model Context Protocol (MCP) server! This hands-on lab demonstrates how to play a classic Four in a Row (Connect Four) game directly through GitHub Copilot Chat using a Spring Boot-based MCP server.
+Welcome to this exercise where you'll experience GitHub Copilot agents integrated with a custom Model Context Protocol (MCP) server! This hands-on lab demonstrates how to play a classic Four in a Row (Connect Four) game directly through GitHub Copilot Chat using a Spring Boot-based MCP server.
 
 The main purpose of this demo is to showcase how MCP servers can extend GitHub Copilot's capabilities beyond code generation to include interactive applications and real-time game logic.
 
 ## Lab Overview 📋
 
-**Duration**: 30-45 minutes  
-**Difficulty**: Intermediate  
+**Duration**: 30-45 minutes
+**Difficulty**: Intermediate
 
 ## Good to know
 

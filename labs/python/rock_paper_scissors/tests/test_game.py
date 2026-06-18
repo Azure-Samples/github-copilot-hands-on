@@ -18,7 +18,7 @@ class TestGame(unittest.TestCase):
         self.assertEqual(determine_winner("scissors", "scissors"), "tie")
     
     # used inline GHCP chat with the following prompt:
-    # /tests Write test cases for the Scorer class to verify point calculation and score updates
+    # Generated with Copilot: Write test cases for the Scorer class to verify point calculation and score updates.
     def test_calculate_points(self):
         scorer = Scorer()
         self.assertEqual(scorer.calculate_points("rock"), 1)

@@ -4,11 +4,11 @@ In this hands-on lab, you'll build a Python client for the Star Wars API (SWAPI)
 
 ## Lab Overview 📋
 
-**Duration**: 1 hour  
-**Difficulty**: Intermediate  
+**Duration**: 1 hour
+**Difficulty**: Intermediate
 **Prerequisites**:
 
-- Basic knowledge of Python, REST APIs, and unit testing  
+- Basic knowledge of Python, REST APIs, and unit testing
 - Python 3.8+: [Download Python](https://www.python.org/downloads/)
 - pip package manager (included with Python)
 
@@ -28,7 +28,7 @@ A Python client for the Star Wars API with the following components:
 We'll start by setting up a basic Python project structure. GitHub Copilot will help us create the necessary files and configurations.
 
 !!! tip "Copilot Tip"
-     You can ask Github Copilot Chat to provide you with the steps to create a Python based project with a prompt like: ``How can I create a Python based project with unit tests?``
+     You can ask GitHub Copilot Chat to provide you with the steps to create a Python based project with a prompt like: ``How can I create a Python based project with unit tests?``
 
 Let's set up our project directory. Create an empty folder and navigate to it via terminal.
 
@@ -94,7 +94,7 @@ Let's start by using Luke Skywalker as an example: [https://swapi.info/people/1]
 
 ??? note "Please copy the JSON in your clipboard:"
     ```json
-    {  
+    {
         "name": "Luke Skywalker",
         "height": "172",
         "mass": "77",
@@ -128,9 +128,9 @@ Let's start by using Luke Skywalker as an example: [https://swapi.info/people/1]
 Now, let's create a data class to represent a Star Wars character.
 
 !!! tip "Copilot Tip"
-     Create a `star_wars_character.py` file and use Github Copilot Ask/Edit mode to create a data class for the Star Wars Character. You can use the JSON payload above as an example payload within the prompt.
+     Create a `star_wars_character.py` file and use GitHub Copilot to create a data class for the Star Wars character. Use Ask-style chat if you want a snippet to copy manually, or use an agentic coding workflow if you want Copilot to propose the new file directly. You can use the JSON payload above as example context within the prompt.
 
-Remember that you can directly create files out of Copilot chat by clicking on the three dots icon and then clicking `Insert into New File`, if you are using the Ask mode:
+If Copilot returns a code snippet in chat, you can insert it into a new file from the chat response. If you use an agentic coding workflow, review the proposed new file before keeping it:
 
  ![image: insert into new file](../assets/images/starwarsapi/2.png){ width=400px }
 
@@ -186,10 +186,10 @@ Below is a sample implementation for `star_wars_character.py`.
     ```
 
 !!! tip "Copilot Tip"
-    If you are facing an error, you can ask Github Copilot to help you fix the error.
+    If you are facing an error, you can ask GitHub Copilot to help you fix the error.
 
-    On Mac press ``CMD + .`` and on Windows press ``Control + .`` to open the **quick fix menu** and use the Github Copilot to fix the error.
-    
+    On Mac press ``CMD + .`` and on Windows press ``Control + .`` to open the **quick fix menu** and use the GitHub Copilot to fix the error.
+
     Quick fix menu should look like this:
 
     ![quick fix menu image](../assets/images/starwarsapi/3.png){ width=400px }
@@ -199,7 +199,7 @@ Below is a sample implementation for `star_wars_character.py`.
 We will create an abstract base class (interface in Java) that will be used to query the Star Wars API. The abstract base class will have a method that will return a `StarWarsCharacter` object.
 
 !!! tip "Copilot Tip"
-     Create a new file called `star_wars_api.py` file and use Github Copilot chat to create a Python abstract base class for the Star Wars API. We need to have a method that returns Luke Skywalker as a `StarWarsCharacter` object.
+     Create a new file called `star_wars_api.py` file and use GitHub Copilot chat to create a Python abstract base class for the Star Wars API. We need to have a method that returns Luke Skywalker as a `StarWarsCharacter` object.
 
 ??? note "Sample Prompt for Copilot"
     ``Can you help me create a plain python abstract base class that queries the Star Wars API and returns a StarWarsCharacter object? I would like to start with just one method for querying Luke Skywalker. The abstract base class should be called StarWarsAPI.``
@@ -214,7 +214,7 @@ Here's a sample implementation for `star_wars_api.py`:
 
     class StarWarsAPI(ABC):
         """Abstract Base Class for Star Wars API client"""
-        
+
         @abstractmethod
         def get_luke_skywalker(self) -> StarWarsCharacter:
             """
@@ -232,7 +232,7 @@ Here's a sample implementation for `star_wars_api.py`:
 We will now create a test for the `StarWarsAPI` abstract base class. The test will be used to verify that the abstract base class is working as expected. We will use pytest to create the test.
 
 !!! tip "Copilot Tip"
-     Open the `test_star_wars_api.py` file in the tests folder and use Github Copilot to create a test for the `StarWarsAPI` abstract base class. Use the `/tests` command to let Copilot generate the test for you.
+     Open the `test_star_wars_api.py` file in the tests folder and ask GitHub Copilot to create a test for the `StarWarsAPI` abstract base class. A prompt such as `Create pytest tests for the StarWarsAPI abstract base class` works across Copilot chat surfaces.
 
 Here's a sample implementation for `test_star_wars_api.py`:
 
@@ -247,7 +247,7 @@ Here's a sample implementation for `test_star_wars_api.py`:
         """Test that get_luke_skywalker returns Luke Skywalker's data"""
         star_wars_api = StarWarsAPIImpl()
         luke_skywalker = star_wars_api.get_luke_skywalker()
-        
+
         assert luke_skywalker is not None
         assert luke_skywalker.name == "Luke Skywalker"
         assert luke_skywalker.height == "172"
@@ -263,7 +263,7 @@ Now, let's implement the abstract base class using Python's requests library.
 We will first create the `StarWarsAPIImpl` class that implements the `StarWarsAPI` abstract base class. The class will have a method that will return a `StarWarsCharacter` object. As we need to have a start, we will use the Luke Skywalker example and also use a method to query specificly for Luke Skywalker.
 
 !!! tip "Copilot Tip"
-     Create a new file `star_wars_api_impl.py` file and use Github Copilot to implement the `StarWarsAPI` abstract base class. The implementation should use the requests library to fetch data from the Star Wars API.
+     Create a new file `star_wars_api_impl.py` file and use GitHub Copilot to implement the `StarWarsAPI` abstract base class. The implementation should use the requests library to fetch data from the Star Wars API.
 
 Here's a sample implementation for `star_wars_api_impl.py`:
 
@@ -275,10 +275,10 @@ Here's a sample implementation for `star_wars_api_impl.py`:
 
     class StarWarsAPIImpl(StarWarsAPI):
         """Implementation of the Star Wars API client"""
-        
+
         def __init__(self):
             self.base_url = "https://swapi.info/api"
-        
+
         def get_luke_skywalker(self) -> StarWarsCharacter:
         """
         Get Luke Skywalker's information
@@ -313,10 +313,10 @@ The method should be able to fulfill the following points:
 
     class StarWarsAPIImpl(StarWarsAPI):
         """Implementation of the Star Wars API client"""
-        
+
         def __init__(self):
             self.base_url = "https://swapi.info/api"
-        
+
         def get_luke_skywalker(self) -> StarWarsCharacter:
             """
             Get Luke Skywalker's information
@@ -332,7 +332,7 @@ The method should be able to fulfill the following points:
             response = requests.get(url, allow_redirects=True)
 
             # Raise an exception for HTTP errors
-            response.raise_for_status()  
+            response.raise_for_status()
 
             # Parse the response JSON into a StarWarsCharacter object
             return StarWarsCharacter.from_dict(response.json())
@@ -352,8 +352,8 @@ We will now implement the `getDarthVader` method in the `StarWarsAPIImpl` class.
 
 !!! tip "Copilot Tip"
      Add a new method to the `StarWarsAPI` abstract base class and implement it in the `StarWarsAPIImpl` class.
-     
-     Either use a comment or **the Copilot Edit/Agent mode** with a prompt: `Add a method to get information about Darth Vader`.
+
+     Either use an inline comment as context or ask an agentic coding workflow with the prompt: `Add a method to get information about Darth Vader`.
 
 First, add the method to the abstract base class in `star_wars_api.py`:
 
@@ -365,7 +365,7 @@ First, add the method to the abstract base class in `star_wars_api.py`:
 
     class StarWarsAPI(ABC):
         """abstract base class for Star Wars API client"""
-        
+
         @abstractmethod
         def get_luke_skywalker(self) -> StarWarsCharacter:
             """
@@ -376,7 +376,7 @@ First, add the method to the abstract base class in `star_wars_api.py`:
                 Exception: If an error occurs while fetching the data
             """
             pass
-        
+
         @abstractmethod
         def get_darth_vader(self) -> StarWarsCharacter:
             """
@@ -400,10 +400,10 @@ Then, implement the `get_darth_vader` method in `star_wars_api_impl.py`:
 
     class StarWarsAPIImpl(StarWarsAPI):
         """Implementation of the Star Wars API client"""
-        
+
         def __init__(self):
             self.base_url = "https://swapi.info/api"
-        
+
         def get_luke_skywalker(self) -> StarWarsCharacter:
             """
             Get Luke Skywalker's information
@@ -415,9 +415,9 @@ Then, implement the `get_darth_vader` method in `star_wars_api_impl.py`:
             url = f"{self.base_url}/people/1/"
             response = requests.get(url, allow_redirects=True)
             response.raise_for_status()  # Raise an exception for HTTP errors
-            
+
             return StarWarsCharacter.from_dict(response.json())
-        
+
         def get_darth_vader(self) -> StarWarsCharacter:
             """
             Get Darth Vader's information
@@ -429,7 +429,7 @@ Then, implement the `get_darth_vader` method in `star_wars_api_impl.py`:
             url = f"{self.base_url}/people/4/"
             response = requests.get(url, allow_redirects=True)
             response.raise_for_status()  # Raise an exception for HTTP errors
-            
+
             return StarWarsCharacter.from_dict(response.json())
     ```
 
@@ -447,10 +447,10 @@ Since we have duplicate code now, let's refactor the code.
 
     class StarWarsAPIImpl(StarWarsAPI):
         """Implementation of the Star Wars API client"""
-        
+
         def __init__(self):
             self.base_url = "https://swapi.info/api"
-        
+
         def get_luke_skywalker(self) -> StarWarsCharacter:
             """
             Get Luke Skywalker's information
@@ -460,7 +460,7 @@ Since we have duplicate code now, let's refactor the code.
                 Exception: If an error occurs while fetching the data
             """
             return self._get_star_wars_character(1)
-        
+
         def get_darth_vader(self) -> StarWarsCharacter:
             """
             Get Darth Vader's information
@@ -470,7 +470,7 @@ Since we have duplicate code now, let's refactor the code.
                 Exception: If an error occurs while fetching the data
             """
             return self._get_star_wars_character(4)
-        
+
         def _get_star_wars_character(self, character_id: int) -> StarWarsCharacter:
             """
             Get a Star Wars character by ID
@@ -484,7 +484,7 @@ Since we have duplicate code now, let's refactor the code.
             url = f"{self.base_url}/people/{character_id}/"
             response = requests.get(url, allow_redirects=True)
             response.raise_for_status()  # Raise an exception for HTTP errors
-            
+
             return StarWarsCharacter.from_dict(response.json())
     ```
 
@@ -503,7 +503,7 @@ Here's a sample test method to add to `test_star_wars_api.py`:
         """Test that get_darth_vader returns Darth Vader's data"""
         star_wars_api = StarWarsAPIImpl()
         darth_vader = star_wars_api.get_darth_vader()
-        
+
         assert darth_vader is not None
         assert darth_vader.name == "Darth Vader"
         assert darth_vader.height == "202"
@@ -521,7 +521,7 @@ python -m pytest tests/
 Let's create a simple application module to demonstrate the API client:
 
 !!! tip "Copilot Tip"
-     Open the `app.py` file and use Github Copilot to create a simple application that demonstrates the Star Wars API client.
+     Open the `app.py` file and use GitHub Copilot to create a simple application that demonstrates the Star Wars API client.
 
 Here's a sample implementation for `app.py`:
 
@@ -534,9 +534,9 @@ Here's a sample implementation for `app.py`:
         """Main function to demonstrate the Star Wars API client"""
         print("Star Wars API Client")
         print("--------------------")
-        
+
         api = StarWarsAPIImpl()
-        
+
         # Get Luke Skywalker
         luke = api.get_luke_skywalker()
         print(f"\nName: {luke.name}")
@@ -544,7 +544,7 @@ Here's a sample implementation for `app.py`:
         print(f"Mass: {luke.mass} kg")
         print(f"Hair color: {luke.hair_color}")
         print(f"Appears in {len(luke.films)} films")
-        
+
         # Get Darth Vader
         vader = api.get_darth_vader()
         print(f"\nName: {vader.name}")

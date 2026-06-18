@@ -1,7 +1,7 @@
 # Image Gallery with Animations
 <!-- REPLACE THE TITLE WITH THE NAME OF THE EXERCISE -->
 
-This exercise will help you create a simple image gallery with animations using JavaScript and CSS leveraging Github Copilot.
+This exercise will help you create a simple image gallery with animations using JavaScript and CSS leveraging GitHub Copilot.
 
 ## 🎯 Goal
 <!-- ONE SENTENCE ABOUT THE GOAL OF THE EXERCISE -->
@@ -122,10 +122,10 @@ Optionally, ask Copilot Chat if it is possible to make the images different from
 In this step, you will add a polaroid effect to the images.
 
 > [!Important]
-> - Ask Github Copilot Chat to generate the CSS code for the polaroid effect. Remember to have the index.html file open in the editor.
+> - Ask GitHub Copilot Chat to generate the CSS code for the polaroid effect. Remember to have the index.html file open in the editor.
 
 > [!Tip]
-> - You can use the following prompt in Github Copilot chat to generate the CSS code for the polaroid effect: ``I want these images to look like a polaroid photo. What do I need to add?``
+> - You can use the following prompt in GitHub Copilot chat to generate the CSS code for the polaroid effect: ``I want these images to look like a polaroid photo. What do I need to add?``
 > - Inspect the result and copy over the complete ``<style>`` tag to your html file.
 
 ### Solution
@@ -184,10 +184,10 @@ Refresh your browser to see the polaroid effect on the images in the gallery. Ho
 In this step, you will align the images in a 3x3 grid. It is important that the gallery should always be in the center of the page.
 
 > [!Important]
-> - Ask Github Copilot Chat Edit mode to generate the CSS code for the 3x3 grid. Remember to have the index.html file open in the editor.
+> - Ask GitHub Copilot to generate the CSS code for the 3x3 grid. Keep the `index.html` file open so Copilot has the right context.
 
 > [!Tip]
-> - Ask Github Copilot Chat Edit mode to generate the CSS code for the 3x3 grid: ``Align the images to be a gallery with 3 by 3 grid. The gallery should always be in the center of the screen. */``
+> - Use a prompt such as: ``Align the images as a 3 by 3 gallery grid. The gallery should always be in the center of the screen.``
 > - Press ``Keep`` to accept the suggestion.
 
 ### Solution
@@ -211,7 +211,7 @@ In this step, you will align the images in a 3x3 grid. It is important that the 
             align-items: center;
             margin: 0 auto;
             width: 600px;
-            
+
         }
 
       .gallery img {
@@ -257,13 +257,13 @@ Refresh your browser to see the images in a 3x3 grid in the center of the page.
 In this step, you will add animations to the images. The images should wobble when you hover over them.
 
 > [!Important]
-> - Use either Github Copilot chat or a comment in the style tag to generate the CSS code for the wobble effect. Remember to have the index.html file open in the editor.
+> - Use either GitHub Copilot chat or a comment in the style tag to generate the CSS code for the wobble effect. Remember to have the index.html file open in the editor.
 
 > [!Tip]
 > - You can use the following comment in the style tag to generate the CSS code for the wobble effect: ``/* an image should rotate slowly few degrees from left to right and right to left
       when hovering the mouse over it in an infinite loop. When moving out of the img the img should rotate back slowly with an animation in its basic position */``
 > - Press tab to accept the suggestions. It might be more than one :)
-> - You can also ask Github Copilot Chat to generate the CSS code for the wobble effect.
+> - You can also ask GitHub Copilot Chat to generate the CSS code for the wobble effect.
 > - Play around with the values of the keyframes to see how the wobble effect changes.
 >
 
@@ -317,7 +317,7 @@ In this step, you will add animations to the images. The images should wobble wh
             100% {
                 transform: rotate(0deg);
             }
-        }      
+        }
     </style>
   </head>
   <body>
@@ -349,7 +349,7 @@ Refresh your browser to see the wobble effect on the images in the gallery. Hove
 In this step, you will reduce the opacity of the non-hovered images.
 
 > [!Important]
-> - Use either Github Copilot chat or a comment in the style tag to generate the CSS code for the opacity effect. Remember to have the index.html file open in the editor.
+> - Use either GitHub Copilot chat or a comment in the style tag to generate the CSS code for the opacity effect. Remember to have the index.html file open in the editor.
 > - We recommend rather using Copilot chat for this step.
 > - Try to explain exactly what you want to achieve in the chat.
 
@@ -419,7 +419,7 @@ In this step, you will reduce the opacity of the non-hovered images.
         }
       }
 
-      
+
     </style>
   </head>
   <body>
@@ -451,7 +451,7 @@ Refresh your browser to see the opacity effect on the non-hovered images in the 
 In this step, you will remove one image from the gallery when you click on it. Be careful with the events of the DOM elements. Some elements might not be available when the page is loaded.
 
 > [!Important]
-> Use Github Copilot chat to generate the JavaScript code for removing an image from the gallery when you click on it. Remember to have the index.html file open in the editor, or add the file as context.
+> Use GitHub Copilot chat to generate the JavaScript code for removing an image from the gallery when you click on it. Remember to have the index.html file open in the editor, or add the file as context.
 
 > [!Tip]
 > - You can use the following prompt in the chat: ``I would like to remove an element from the image gallery when clicking on it. Can you return the whole html page with the new added javascript?``
@@ -554,18 +554,18 @@ In this step, you will remove one image from the gallery when you click on it. B
 
 </details>
 
-## 🖼️ Using Agent Mode & Vision Input to create the gallery
+## 🖼️ Using an agent and vision input to create the gallery
 
-In this step, we'll leverage GitHub Copilot’s Agent Mode and Vision Input to transform a mockup image into a fully functional HTML page with embedded CSS.
+In this step, we'll use a Copilot agent with visual input to transform a mockup image into a fully functional HTML page with embedded CSS.
 
-> **Mockup file:** `gallery/images/img_gallery_prompt.jpg`  
-> **Prompt for Copilot Chat:**  
+> **Mockup file:** `gallery/images/img_gallery_prompt.jpg`
+> **Prompt for Copilot Chat:**
 >     Can you create an HTML page for me with the given mockup? Please take a close look at the designer's remarks marked with arrows! Render one HTML page with embedded CSS. Photos should have a white background.
 
-1. Open GitHub Copilot Chat and switch to **Agent Mode** (optional).  
-2. Upload `img_gallery_prompt.jpg` via dragging the image to the chat or by clicking `Add Context` button.  
-3. Paste the prompt above and submit.  
-4. Copy Copilot’s generated HTML+CSS into a new file (e.g., `index-agent.html`).  
+1. Open GitHub Copilot Chat and use an agentic coding workflow.
+2. Upload `img_gallery_prompt.jpg` via dragging the image to the chat or by clicking `Add Context` button.
+3. Paste the prompt above and submit.
+4. Copy Copilot’s generated HTML+CSS into a new file (e.g., `index-agent.html`).
 5. Preview with Live Server.
 
 ---

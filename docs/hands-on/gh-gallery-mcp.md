@@ -2,21 +2,21 @@
 
 Happy you find your way to this exercise. This exercise demonstrates how to leverage an agent to interpret a designer mockup, use the GitHub Copilot MCP server to generate issues, read repository information, and more. Furthermore we will use the Playwright MCP server to generate tests for the Polaroid image gallery.
 
-The main purpose of this demo is to provide a hands-on experience with GitHub Copilot, the new agent mode and its integration with MCP servers.
+The main purpose of this demo is to provide a hands-on experience with GitHub Copilot agents and their integration with MCP servers.
 
 ## Lab Overview 📋
 
-**Duration**: 45-60 minutes  
-**Difficulty**: Intermediate  
+**Duration**: 45-60 minutes
+**Difficulty**: Intermediate
 
 ## Good to know
 
-This exercise is a successor of the Polaroid image gallery exercise we use for our fundamentals course. You find that exercise [here](./html-gallery.md). It does make sense to let your participants do the fundamentals course first and then this exercise to also show how much more powerful the GitHub Copilot agent mode is.
+This exercise is a successor of the Polaroid image gallery exercise we use for our fundamentals course. You find that exercise [here](./html-gallery.md). It makes sense to let participants do the fundamentals course first, then use this exercise to show how much more powerful Copilot becomes when an agent can use tools.
 
 !!! info "The results are non-deterministic!"
     **Even though you are using the same prompt, the agent might generate different code each time. This is normal and expected!**
 
-    It is NOT possible to write a deterministic training and exercise for GitHub Copilot and the experience will be different for each participant. You need to deal with this. Safeguarding your code is a necessity and you should always use version control and automated testing to keep track of your changes when using GitHub Copilot. 
+    It is NOT possible to write a deterministic training and exercise for GitHub Copilot and the experience will be different for each participant. You need to deal with this. Safeguarding your code is a necessity and you should always use version control and automated testing to keep track of your changes when using GitHub Copilot.
 
 ## Prerequisites
 
@@ -36,7 +36,7 @@ Always make sure that you need to start the right GitHub MCP server based on how
 
 ![MCP Servers Setup](../assets/images/mcp/mcp_servers_setup.png){ width=750px }
 
-When starting the GitHub MCP server, you will be prompted to enter your **GitHub Personal Access Token (PAT)**. This is required to authenticate with the GitHub API and allows the MCP server to access your repositories and other information. 
+When starting the GitHub MCP server, you will be prompted to enter your **GitHub Personal Access Token (PAT)**. This is required to authenticate with the GitHub API and allows the MCP server to access your repositories and other information.
 
 You can create a PAT by following the instructions in the [GitHub documentation](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens?wt.mc_id=DT-MVP-5004771).
 
@@ -63,7 +63,7 @@ After clicking on the tools button, you should see the following:
 
 We will leverage the GitHub Copilot MCP server to create an issue in your repository. This issue will contain the requirements for the Polaroid image gallery based on the designer mockup.
 
-Switch over to the GitHub Copilot Chat and drag the [crazy_mockup.png](https://github.com/jeffreygroneberg/ghcp-mcp/tree/main/html/mockup) (ghcp-mcp/html/mockup) file into the chat input panel. This will upload the image to the chat and allow the agent to analyze it. Be sure to use `Claude 3.7 Sonnet` or another reasoning model for this task (that is capable of dealing with images). A reasoning model is recommended to analyze the image and create an issue with the requirements.
+Switch over to GitHub Copilot Chat and drag the [crazy_mockup.png](https://github.com/jeffreygroneberg/ghcp-mcp/tree/main/html/mockup) (`ghcp-mcp/html/mockup`) file into the chat input panel. This uploads the image to the chat and allows the agent to analyze it. Use Auto if available, or choose a current reasoning model that supports image input in your Copilot surface.
 
 Open the basic `index.html` file in an active tab, and use the following prompt to create the issue:
 
@@ -71,7 +71,7 @@ Open the basic `index.html` file in an active tab, and use the following prompt 
     ```
     Create an issue in my repository to implement a Polaroid image gallery based on the designer mockup I just uploaded. The issue should contain the requirements for the Polaroid image gallery and a list of tasks to complete. The issue should emphasize the need for a 3x3 grid layout and the minimal use of javascript.
 
-    Create the issue in the upstream repository of this repository on github.com. I am the owner of this repository and have access to the upstream repository.
+    Create the issue in the upstream repository of this repository on GitHub.com. I am the owner of this repository and have access to the upstream repository.
     ```
 
 When the agent is running, there **will** come additional questions or clarifications. This is normal and expected. The agent will ask you to clarify the requirements and it will also ask you to press a button. Do that.
@@ -86,7 +86,7 @@ When the agent is done, you should see an issue created in your repository.
 !!! note "Note"
     **Follow the link to the issue and check if the requirements are correct. If not, you can always ask the agent to update the issue!**
 
-Congratulations! You have successfully created an issue in your repository using the GitHub Copilot MCP server and the agent mode.
+Congratulations! You have successfully created an issue in your repository using the GitHub Copilot MCP server and an agentic workflow.
 
 Now we will use the GitHub Copilot MCP server to create the Polaroid image gallery based on the requirements in the issue we just created.
 
@@ -104,7 +104,7 @@ In order to create the Polaroid image gallery, we need to read the issue we just
 
 !!! abstract ""
     ```
-    Read all issues in the upstream repository of this repository on github.com. I am the owner of this repository and have access to the upstream repository. 
+    Read all issues in the upstream repository of this repository on GitHub.com. I am the owner of this repository and have access to the upstream repository.
     ```
 
 The agent will leverage the GitHub Copilot MCP server to read all issues in the repository. This will allow the agent to access the issue we just created and use it as a reference for creating the Polaroid image gallery.
@@ -115,7 +115,7 @@ A result should look like this:
 
 ### Let the agent create the Polaroid image gallery for us
 
-Now we can let the agent create the Polaroid image gallery for us. Be sure to select `Claude Sonnet 4` for this task.
+Now we can let the agent create the Polaroid image gallery for us. Use Auto if available, or choose a current model recommended for agentic coding in the official GitHub model comparison.
 Use the following prompt to create the Polaroid image gallery - **adjust the prompt to target your own issue number**:
 
 !!! abstract ""
@@ -125,7 +125,7 @@ Use the following prompt to create the Polaroid image gallery - **adjust the pro
 
 It will take some time for the agent to create the gallery. When the agent is done, you should see the Polaroid image gallery created in your repository. You need to press the `keep` button to keep the code.
 
-Right click the `index.html` file and open it with `Live Server`: 
+Right click the `index.html` file and open it with `Live Server`:
 
 ![Open with Live Server](../assets/images/mcp/live_server.png){ width=400px }
 
@@ -146,12 +146,12 @@ The Nyan Cat might now fly in the Polaroid image gallery. Please use the followi
 
 !!! abstract ""
     ```
-    There is no nyan cat flying in the Polaroid image gallery. Please fix this issue and make the nyan cat fly in the Polaroid image gallery in the footer from left to right. Use the following image as a src: https://media.tenor.com/E3MLgDP1qoQAAAAi/nyan-cat-transparent.gif 
+    There is no nyan cat flying in the Polaroid image gallery. Please fix this issue and make the nyan cat fly in the Polaroid image gallery in the footer from left to right. Use the following image as a src: https://media.tenor.com/E3MLgDP1qoQAAAAi/nyan-cat-transparent.gif
     ```
 
 #### Fixing other bugs
 
-Interact with the agent and ask it to fix other bugs. You can also ask the agent to improve the code and make it more readable. Give the agent clear instructions and it will do its best to help you. 
+Interact with the agent and ask it to fix other bugs. You can also ask the agent to improve the code and make it more readable. Give the agent clear instructions and it will do its best to help you.
 
 You can also reference old tasks and refine them by giving the agent clear feedback.
 
@@ -180,7 +180,7 @@ Afterwards use the following prompt to create a test that checks if the rick rol
 
 !!! abstract ""
     ```
-    Can you create an automated test out of this? 
+    Can you create an automated test out of this?
     ```
 
 Last one is complex and might take some time. The agent will create a test for you that checks if the rick roll sound is playing when clicking on an image.
@@ -193,7 +193,7 @@ Now we can close the issue we created in the first step. Use the following promp
 
 !!! abstract ""
     ```
-    Close the issue #44 in the upstream repository of this repository on github.com. I am the owner of this repository and have access to the upstream repository. 
+    Close the issue #44 in the upstream repository of this repository on GitHub.com. I am the owner of this repository and have access to the upstream repository.
     ```
 
 Confirm the update and the issue will be closed. Check the issue in your repository and make sure it is closed.
@@ -202,8 +202,8 @@ Confirm the update and the issue will be closed. Check the issue in your reposit
 
 In this lab, you've learned how to:
 
-- Use GitHub's Model Context Protocol (MCP) servers to interact with GitHub repositories using Github Copilot, and create issues programmatically
-- Leverage the GitHub Copilot agent mode with reasoning models to analyze designer mockups and translate them into technical requirements
+- Use GitHub's Model Context Protocol (MCP) servers to interact with GitHub repositories using GitHub Copilot, and create issues programmatically
+- Leverage GitHub Copilot agents with reasoning and visual input to analyze designer mockups and translate them into technical requirements
 - Create a Polaroid image gallery implementation based on GitHub issue requirements using minimal JavaScript
 - Use the Playwright MCP server to generate automated tests for web applications
 - Debug and fix issues in generated code through iterative prompting with the agent

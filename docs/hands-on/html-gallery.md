@@ -4,9 +4,9 @@ In this hands-on lab, you'll build an interactive image gallery with animations 
 
 ## Lab Overview 📋
 
-**Duration**: 45 minutes  
-**Difficulty**: Beginner-Intermediate  
-**Prerequisites**: Basic knowledge of HTML, CSS, and JavaScript  
+**Duration**: 45 minutes
+**Difficulty**: Beginner-Intermediate
+**Prerequisites**: Basic knowledge of HTML, CSS, and JavaScript
 
 ## What You'll Build 🏗️
 
@@ -123,9 +123,9 @@ Optionally, ask Copilot Chat if it is possible to make the images different from
 Let's add some CSS to style our gallery. We'll create a 3 by 3 grid layout and add some basic styling to the images. We want the images to have a polaroid effect.
 
 !!! tip "Copilot Tip"
-    Add a style tag in the head section and add a comment describing the styling you want to create. Or you can use Copilot Ask or Edit Mode to generate the styling for the polaroid effect.
+    Add a style tag in the head section and add a comment describing the styling you want to create. You can use the Ask-style chat for guidance, or an agentic coding workflow to propose the CSS changes directly in the file.
 
-You can use the following prompt in Github Copilot chat to generate the CSS code for the polaroid effect: ``I want images in the gallery to have a 3 by 3 grid layout and look like a polaroid photo. What do I need to add?``
+You can use the following prompt in GitHub Copilot chat to generate the CSS code for the polaroid effect: ``I want images in the gallery to have a 3 by 3 grid layout and look like a polaroid photo. What do I need to add?``
 
 ???+ "Add this to your head section:"
     ```html
@@ -158,7 +158,7 @@ You can use the following prompt in Github Copilot chat to generate the CSS code
 Now, let's add some hover effects to make our gallery more interactive. The images should wobble when you hover over them in an infinite loop. We also want to reduce the opacity of the non-hovered images.
 
 !!! tip "Copilot Tip"
-    Ask Github Copilot Ask/Edit Mode to generate the styling code for hovering effects. Remember to have the index.html file open in the editor.
+    Ask GitHub Copilot to generate the styling code for hovering effects. Keep the `index.html` file open so Copilot has the right context, then review the proposed changes before accepting them.
 
 Inspect the result and accept the changes made under ``<style>`` tag in your html file.
 
@@ -285,24 +285,24 @@ After adding the JavaScript, your complete HTML should look something like the s
 !!! tip "Copilot Tip"
     Ask Copilot chat why a script tag can be placed in the body tag: "Why is it better in this case to place the script tag at the end of the body tag?"
 
-## Bonus Challenge: Using Agent Mode & Vision Input to create the gallery 🖼️
+## Bonus Challenge: Using an agent and vision input to create the gallery 🖼️
 
-In this step, we'll leverage GitHub Copilot’s **Agent Mode** and **Vision Input** to transform a mockup image into a fully functional HTML page with embedded CSS.
+In this step, we'll use a Copilot agent with visual input to transform a mockup image into a fully functional HTML page with embedded CSS.
 
-Add the following mockup image to the Github Copilot as context, by copying it and pasting it in Copilot chat.
+Add the following mockup image to the GitHub Copilot as context, by copying it and pasting it in Copilot chat.
 
 ??? abstract "Mockup image for the gallery"
     ![Mockup image for the gallery](../assets/images/gallery/img_gallery_prompt.jpg)
 
-!!! note "Prompt for Copilot Agent Mode:"  
+!!! note "Prompt for Copilot agent:"
     Can you create an HTML page for me with the given mockup? Please take a close look at the designer's remarks marked with arrows! Render one HTML page with embedded CSS. Photos should have a white background.
 
 Here are the steps you can follow:
 
 1. Create a new HTML file (e.g., `index-agent.html`).
-2. Open GitHub Copilot Chat and switch to **Agent Mode**.  
-3. Upload the mockup image via pasting it to the chat or by clicking `Add Context` button.  
-4. Paste the prompt above and submit.  
+2. Open GitHub Copilot Chat and use an agentic coding workflow.
+3. Upload the mockup image via pasting it to the chat or by clicking `Add Context` button.
+4. Paste the prompt above and submit.
 5. Accept the generated HTML & CSS code from Copilot.
 6. Preview with Live Server.
 
